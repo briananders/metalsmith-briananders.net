@@ -24,7 +24,9 @@ HTML_CLASS=$(echo "$PAGE_NAME" | sed "s+/+ +g")
 
 make_scss_file()
 {
-echo ".$SCSS_CLASS {
+echo "@import \"lib/base-styles\";
+
+.$SCSS_CLASS {
 
 }" >> $STYLES_LOCATION
 echo "created $STYLES_LOCATION"
