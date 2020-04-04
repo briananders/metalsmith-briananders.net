@@ -27,9 +27,11 @@ module.exports = (dir, pageMappingData) => ({
       const len = splitUrl.length - 1;
       if (parentPath === '') {
         return len === 0 && !page.url.includes('.html');
-      } else if (iOf === -1) {
+      }
+      if (iOf === -1) {
         return false;
-      } else if (len - iOf === 1) {
+      }
+      if (len - iOf === 1) {
         return true;
       }
       return false;
@@ -60,8 +62,10 @@ module.exports = (dir, pageMappingData) => ({
     return str.replace(/\s([^\s]+)$/, '&nbsp;$1');
   },
 
-  code(block, locals = { class: '', style: '' }) {
+  code(block, locals = { class: '', style: '', label: '' }) {
+    const labelMarkup = (locals.label && locals.label.length) ? `<label class="code-label">${locals.label}</label>` : "";
     return `
+      ${labelMarkup}
       <div class="code-container ${locals.class}" style="${locals.style}">
         <code>${block.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code>
       </div>

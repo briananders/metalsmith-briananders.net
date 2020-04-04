@@ -18,7 +18,6 @@ code {
   @include font-size();
   max-width: 600px;
   margin: auto auto $s6;
-  margin-bottom: $s6;
   max-width: 100%;
   overflow: hidden;
   position: relative;
@@ -48,6 +47,10 @@ code {
       background: linear-gradient(to right, transparent, $primary-text-color);
     }
   }
+}
+
+.code-label {
+  padding-left: 0;
 }
 
 var {

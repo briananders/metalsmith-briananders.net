@@ -1,0 +1,125 @@
+---
+title: 'How to remove spaces around inline block elements'
+description: 'It is really annoying to deal with unexplainable spaces around elements in your website. Thankfully, I have been there, and I have some solutions.'
+date: 2020-04-04
+priority: 0.8
+pageClasses:
+  - 'thoughts how-to-remove-spaces-around-inline-block-elements'
+layout: base
+styles:
+  - 'main'
+  - 'thoughts/how-to-remove-spaces-around-inline-block-elements'
+---
+
+<% const exampleHTML = (className = "") => {
+    const classString = (className && className.length) ? ` class=${className}` : "";
+    return `<div${classString} id="example">
+  <div>string</div>
+  <div>string</div>
+  <div>string</div>
+  <div>string</div>
+  <div>string</div>
+  <div>string</div>
+  <div>string</div>
+  <div>string</div>
+  <div>string</div>
+  <div>string</div>
+</div>`;
+  };
+  const exampleCSS = () => {
+    return `#example {}
+#example > div {
+  width: 20%;
+  display: inline-block;
+}`;
+  }
+  const exampleHTMLNoSpaces = (className = "") => {
+    const classString = (className && className.length) ? ` class=${className}` : "";
+    return `<div${classString} id="example">
+  <div>string</div><div
+  >string</div><div
+  >string</div><div
+  >string</div><div
+  >string</div><div
+  >string</div><div
+  >string</div><div
+  >string</div><div
+  >string</div><div
+  >string</div><div
+  >string</div><div
+  >string</div><div
+  >string</div><div
+  >string</div><div
+  >string</div>
+</div>`;
+  };
+  %>
+
+<article class="content" itemscope itemtype="http://schema.org/BlogPosting">
+  <section>
+    <div class="container">
+      <h2>The problem</h2>
+      <p>This is a pretty common HTML layout</p>
+
+      <%- exampleHTML() %>
+
+      <%- code(exampleHTML(), { label: "Common HTML layout" }) %>
+
+      <style>
+        <%- exampleCSS() %>
+      </style>
+
+      <%- code(exampleCSS(), { label: "Common CSS" }) %>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Use Flexbox</h2>
+      <p>This is probably the best, and easiest way to do this.</p>
+
+      <%- exampleHTML("flex") %>
+
+      <style>
+        #example.flex { display: flex; flex-wrap: wrap; }
+      </style>
+
+      <%- code(`#example {
+  display: flex;
+  flex-wrap: wrap;
+}`, { label: "Using Flexbox" }) %>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Remove the spaces</h2>
+      <p>Move the opening tag to have no spaces between itself and the previous closing tag. No space to render.</p>
+
+      <%- exampleHTMLNoSpaces() %>
+
+      <%- code(exampleHTMLNoSpaces(), { label: "Moving the opening tag" }) %>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Adjust font-size</h2>
+      <p>Drop the font-size to almost zero in the parent. And reset the font-size in the child.</p>
+
+      <%- exampleHTML("font-size") %>
+
+      <style>
+        #example.font-size { font-size: 0.00000001px; }
+        #example.font-size > div { font-size: 18px; }
+      </style>
+
+      <%- code(`#example {
+  font-size: 0.00000001px;
+}
+#example > div {
+  font-size: 18px;
+}`, { label: "Using Flexbox" }) %>
+    </div>
+  </section>
+</article>
