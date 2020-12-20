@@ -1,0 +1,55 @@
+@import "./phone-shared";
+@import "./float-iphone";
+
+@keyframes jiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+main, dock {
+  display: flex;
+  padding: 2vw;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+dock {
+  justify-content: space-evenly;
+
+  app {
+    animation-name: jiggle;
+    animation-timing-function: linear;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+  }
+}
+app {
+  margin: 2vw;
+  float: unset;
+}
+close {
+  width: 5vw;
+  height: 5vw;
+  display: block;
+  position: absolute;
+  top: -1vw;
+  left: -1vw;
+  border-radius: 100%;
+  background-color: grey;
+  color: black;
+  text-align: center;
+  line-height: 3.4vw;
+  font-size: 5vw;
+  cursor: pointer;
+}

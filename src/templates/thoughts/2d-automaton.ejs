@@ -15,14 +15,14 @@ styles:
 <blockquote>
   An automaton (plural: automata or automatons) is a self-operating machine, or a machine or control mechanism designed to automatically follow a predetermined sequence of operations, or respond to predetermined instructions.
   <cite>
-    <a href='https://en.wikipedia.org/wiki/Automaton'>Wikipedia.org</a>
+    <%- externalLink("Wikipedia.org", { href: "https://en.wikipedia.org/wiki/Automaton" }) %>
   </cite>
 </blockquote>
 
 <div class="content">
 
   <p>
-    To get a basic introduction to cellular automata, you should check out my first page about <a href='/thoughts/cellular-automaton/'>Elementary Cellular Automaton</a>.
+    To get a basic introduction to cellular automata, you should check out my first page about <%- link("Elementary Cellular Automaton", { href: '/thoughts/cellular-automaton/' }) %>.
   </p>
 
   <p>
@@ -59,7 +59,7 @@ styles:
   </table>
 
   <p>
-    Below I'm using 4 neighbors. With 4 neighbors, there are 65,535 rules. If I used 9 neighbors, there would be 13,&shy;407,&shy;807,&shy;929,&shy;942,&shy;597,&shy;099,&shy;574,&shy;024,&shy;998,&shy;205,&shy;846,&shy;127,&shy;479,&shy;365,&shy;820,&shy;592,&shy;393,&shy;377,&shy;723,&shy;561,&shy;443,&shy;721,&shy;764,&shy;030,&shy;073,&shy;546,&shy;976,&shy;801,&shy;874,&shy;298,&shy;166,&shy;903,&shy;427,&shy;690,&shy;031,&shy;858,&shy;186,&shy;486,&shy;050,&shy;853,&shy;753,&shy;882,&shy;811,&shy;946,&shy;569,&shy;946,&shy;433,&shy;649,&shy;006,&shy;084,&shy;096 rules. Or 13.4 Quinquagintillion. Math reference: <a href='https://www.wolframalpha.com/input/?i=2%5E(2%5E9)'>Wolfram Alpha</a>
+    Below I'm using 4 neighbors. With 4 neighbors, there are 65,535 rules. If I used 9 neighbors, there would be 13,&shy;407,&shy;807,&shy;929,&shy;942,&shy;597,&shy;099,&shy;574,&shy;024,&shy;998,&shy;205,&shy;846,&shy;127,&shy;479,&shy;365,&shy;820,&shy;592,&shy;393,&shy;377,&shy;723,&shy;561,&shy;443,&shy;721,&shy;764,&shy;030,&shy;073,&shy;546,&shy;976,&shy;801,&shy;874,&shy;298,&shy;166,&shy;903,&shy;427,&shy;690,&shy;031,&shy;858,&shy;186,&shy;486,&shy;050,&shy;853,&shy;753,&shy;882,&shy;811,&shy;946,&shy;569,&shy;946,&shy;433,&shy;649,&shy;006,&shy;084,&shy;096 rules. Or 13.4 Quinquagintillion. Math reference: <%- externalLink("Wolfram Alpha", { href: 'https://www.wolframalpha.com/input/?i=2%5E(2%5E9)' }) %>
   </p>
 
   <p>
@@ -68,7 +68,7 @@ styles:
 
   <form class="center p">
     <span>Rule number from 0 to 65,535:</span>
-    <input id="rule" value="10678" type="number" min="0" max="65535" step="2"/>
+    <input id="rule" value="10678" type="number" min="0" max="65535" step="2" aria-label="Rule number"/>
     <span id="rule-up-and-down">
       <button type="button" value="1">&#x25B2;</button>
       <button type="button" value="-1">&#x25BC;</button>

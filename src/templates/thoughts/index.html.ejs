@@ -14,29 +14,6 @@ styles:
 ---
 
 <section>
-  <ul id="thoughts-list" class="content">
-    <%
-      const basePages = getChildPages('thoughts');
-      const newestPages = basePages.sort((pageA, pageB) => {
-        const dateA = new Date(pageA.data.date);
-        const dateB = new Date(pageB.data.date);
-        return (dateA < dateB) ? 1 : -1;
-      });
-      newestPages.forEach(({ url, data: { date, description, title }}) => {
-    %>
-    <li itemscope itemtype="http://schema.org/BlogPosting">
-      <a itemprop="url" href="/<%- url %>">
-        <h3 itemprop="name"><%- noWidows(title) %></h3>
-        <figcaption itemprop="description">
-          <%- noWidows(description) %>
-        </figcaption>
-        <date itemprop="datePublished" content="<%- date %>">
-          <%- formattedDate(date) %>
-        </date>
-        <meta itemprop="author" content="Brian Anders"/>
-        <meta itemprop="publisher" content="Brian Anders"/>
-      </a>
-    </li>
-    <% }); %>
-  </ul>
+  <h2>These are some of my thoughts</h2>
+  <%- partial('thoughts-list', locals) %>
 </section>

@@ -1,0 +1,31 @@
+@import "lib/base-styles";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-size: 100%;
+  font-family: sans-serif;
+}
+phone, main, dock, app, name {
+  display: block;
+  box-sizing: border-box;
+}
+phone {
+  background-color: black;
+}
+app {
+  background-color: white;
+}
+dock {
+  background-color: #333;
+}
+name {
+  position: absolute;
+  width: 80%;
+  margin-left: 10%;
+  text-overflow: ellipsis;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}

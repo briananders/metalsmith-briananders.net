@@ -1,83 +1,28 @@
-<!DOCTYPE html>
-<html lang="en-US" itemscope="itemscope" itemtype="http://schema.org/WebPage">
-<head>
-  <script>
-    function setSitePallette() {
-      var pallettes = [
-        'red',
-        'pink',
-        'purple',
-        'deep-purple',
-        'indigo',
-        'blue',
-        'light-blue',
-        'cyan',
-        'teal',
-        'green',
-        'light-green',
-        'orange',
-        'deep-orange',
-        'brown',
-        'grey',
-        'blue-grey',
-      ];
-      var palletteIndex = Math.floor(Math.random() * pallettes.length);
-      var pallette = pallettes[palletteIndex];
-      var palletteRegex = new RegExp('pallette=([a-zA-Z\-]+)&?');
-      var queryString = location.search.substr(1);
+---
+layout: blank
+---
 
-      if (palletteRegex.test(queryString)) {
-        pallette = queryString.match(palletteRegex)[1];
-      }
+<% if(!locals.devBuild) { %>
+  <%# Google Tag Manager (noscript); %>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5KZW4HX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <%# End Google Tag Manager (noscript); %>
+<% } %>
 
-      document.documentElement.classList.add(pallette);
-    }
-    setSitePallette();
-  </script>
-  <%- partial('meta', locals); %>
-  <script>
-    window.onerror = function (msg, url, lineNo, columnNo, error) {
-      var string = msg.toLowerCase();
-      var message = [
-        'Message: ' + msg,
-        'URL: ' + url,
-        'Line: ' + lineNo,
-        'Column: ' + columnNo,
-        'Error object: ' + JSON.stringify(error)
-      ].join(' - ');
+<%- partial('header', locals); %>
 
-      dataLayer.push({
-        event: 'gaEvent',
-        gaCategory: 'javascript error',
-        gaAction: message,
-      });
-    };
-  </script>
-</head>
-<body>
-  <% if(!locals.devBuild) { %>
-    <%# Google Tag Manager (noscript); %>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5KZW4HX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <%# End Google Tag Manager (noscript); %>
-  <% } %>
+<main class="<%- (locals.pageClasses) ? locals.pageClasses.toString().replace(/,/g,' ') : '' %>">
+  <header class="content">
+    <% if (locals.description) { %>
+      <p class="description" itemprop="description">
+        <%- noWidows(locals.description); %>
+      </p>
+    <% } %>
+  </header>
 
-  <%- partial('header', locals); %>
+  <%- content %>
 
-  <main class="<%- (locals.pageClasses) ? locals.pageClasses.toString().replace(/,/g,' ') : '' %>">
-    <header class="content">
-      <% if (locals.description) { %>
-        <p class="description" itemprop="description">
-          <%- noWidows(locals.description); %>
-        </p>
-      <% } %>
-    </header>
+</main>
 
-		<%- content %>
+<%- partial('footer', locals); %>
 
-  </main>
-
-  <%- partial('footer', locals); %>
-
-  <script src="/scripts/main.js" async defer></script>
-</body>
-</html>
+<script src="/scripts/main.js" async defer></script>

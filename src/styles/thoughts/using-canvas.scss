@@ -7,7 +7,7 @@ main.thoughts.using-canvas {
     width: 100vw;
     border: 1px solid gray;
     box-sizing: border-box;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 66px);
   }
 
   #pause-button.paused {
@@ -17,7 +17,12 @@ main.thoughts.using-canvas {
 
   #clear-button {
     color: $primary-color-text;
-    background-color: red;
+    background-color: darken($color: red, $amount: 15);
+
+    &:hover,
+    &:focus {
+      background-color: darken($color: red, $amount: 30)
+    }
   }
 
   form {

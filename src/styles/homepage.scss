@@ -3,7 +3,7 @@
 main.home {
   @import "modules/thoughts-list";
 
-  header.content {
+  header.content, header.container {
     display: none;
   }
 
@@ -12,6 +12,7 @@ main.home {
     margin-top: 0;
   }
 
+  .container header p,
   .content header p {
     margin-bottom: $s6;
   }

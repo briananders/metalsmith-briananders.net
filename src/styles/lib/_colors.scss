@@ -299,37 +299,37 @@ $google-white: #ffffff;
 
 $pallettes: (
   'red': (
-    'primary-color-dark': $google-red-700,
+    'primary-color-dark': $google-red-800,
     'primary-color': $google-red-600,
     'primary-color-light': $google-red-100,
     'accent-color': $google-blue-a200
   ),
   'pink': (
-    'primary-color-dark': $google-pink-700,
+    'primary-color-dark': $google-pink-800,
     'primary-color': $google-pink-600,
     'primary-color-light': $google-pink-100,
     'accent-color': $google-blue-a200
   ),
   'purple': (
-    'primary-color-dark': $google-purple-700,
+    'primary-color-dark': $google-purple-800,
     'primary-color': $google-purple-600,
     'primary-color-light': $google-purple-100,
     'accent-color': $google-red-a200
   ),
   'deep-purple': (
-    'primary-color-dark': $google-deep-purple-700,
+    'primary-color-dark': $google-deep-purple-800,
     'primary-color': $google-deep-purple-600,
     'primary-color-light': $google-deep-purple-100,
     'accent-color': $google-red-a200
   ),
   'indigo': (
-    'primary-color-dark': $google-indigo-700,
+    'primary-color-dark': $google-indigo-800,
     'primary-color': $google-indigo-600,
     'primary-color-light': $google-indigo-100,
     'accent-color': $google-red-a200
   ),
   'blue': (
-    'primary-color-dark': $google-blue-700,
+    'primary-color-dark': $google-blue-800,
     'primary-color': $google-blue-600,
     'primary-color-light': $google-blue-100,
     'accent-color': $google-green-a200
@@ -347,7 +347,7 @@ $pallettes: (
     'accent-color': $google-yellow-a200
   ),
   'teal': (
-    'primary-color-dark': $google-teal-700,
+    'primary-color-dark': $google-teal-800,
     'primary-color': $google-teal-600,
     'primary-color-light': $google-teal-100,
     'accent-color': $google-orange-a200
@@ -383,31 +383,31 @@ $pallettes: (
     'accent-color': $google-blue-a200
   ),
   'orange': (
-    'primary-color-dark': $google-orange-900,
+    'primary-color-dark': darken($google-orange-900, 5),
     'primary-color': $google-orange-800,
     'primary-color-light': $google-orange-100,
     'accent-color': $google-green-a200
   ),
   'deep-orange': (
-    'primary-color-dark': $google-deep-orange-700,
+    'primary-color-dark': $google-deep-orange-900,
     'primary-color': $google-deep-orange-600,
     'primary-color-light': $google-deep-orange-100,
     'accent-color': $google-green-a200
   ),
   'brown': (
-    'primary-color-dark': $google-brown-700,
+    'primary-color-dark': $google-brown-800,
     'primary-color': $google-brown-600,
     'primary-color-light': $google-brown-100,
     'accent-color': $google-orange-a200
   ),
   'grey': (
-    'primary-color-dark': $google-grey-700,
+    'primary-color-dark': $google-grey-800,
     'primary-color': $google-grey-600,
     'primary-color-light': $google-grey-100,
     'accent-color': $google-orange-a200
   ),
   'blue-grey': (
-    'primary-color-dark': $google-blue-grey-700,
+    'primary-color-dark': $google-blue-grey-800,
     'primary-color': $google-blue-grey-600,
     'primary-color-light': $google-blue-grey-100,
     'accent-color': $google-green-a200

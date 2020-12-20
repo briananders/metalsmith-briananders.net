@@ -142,14 +142,16 @@ styles:
     </div>
   </div>
 
-  <%- code(`.example-container {
-  overflow: hidden;
-}
-.column-1, .column-2, .column-3 {
-  padding-bottom: 99999px;
-  margin-bottom: -99999px;
-  float: left;
-}
+  <%- code(`<style>
+  .example-container {
+    overflow: hidden;
+  }
+  .column-1, .column-2, .column-3 {
+    padding-bottom: 99999px;
+    margin-bottom: -99999px;
+    float: left;
+  }
+</style>
 
 <div class="example-container"></div>
   <div class="column-1 tall">

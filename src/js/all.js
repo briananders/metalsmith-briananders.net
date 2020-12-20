@@ -1,5 +1,3 @@
-/* globals document */
-
 const queryParameters = require('./_modules/queryParameters');
 const lazyLoader = require('./_modules/lazy-loader');
 

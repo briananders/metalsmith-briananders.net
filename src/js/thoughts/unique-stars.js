@@ -137,7 +137,7 @@ function init() {
 
     answerTag.innerHTML = `${answers.length} unique star${answers.length === 1 ? '' : 's'}`;
     if (starOptions.length) {
-      answerArrayTag.innerHTML = `<select data-n="${n}">${starOptions.join('')}<select>`;
+      answerArrayTag.innerHTML = `<select aria-label="Star pattern rule" data-n="${n}">${starOptions.join('')}<select>`;
 
       const select = answerArrayTag.querySelector('select');
       select.addEventListener('change', () => {

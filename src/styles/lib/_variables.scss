@@ -1,11 +1,11 @@
 $gutter:    percentage(20px/940px); // 20px at 960px wide container, accounting for a 1/2 gutter width padding on the left and right of the container
-$onecol:                6.3829787%; // 60px at 960px wide container
+$onecol:    percentage(60px/940px); // 60px at 960px wide container
 $columnsBreakPoint:          600px; // set this to the minimum width you want the columns to take effect at
 $containerMaxWidth:         1280px; // set this to the maximum width you want .container to have
 $base-unit:                    6px;
 
 
-$tablet: 768px;
+$tablet: 600px;
 $desktop: 960px;
 
 
@@ -38,4 +38,4 @@ $transition-speed: 0.2s;
 
 
 
-$border-radius: $base-unit;
+$border-radius: $base-unit / 2;

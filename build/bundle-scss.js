@@ -23,7 +23,7 @@ module.exports = function bundleSCSS({ dir, completionFlags, buildEvents, debug 
     sass.render({
       file: scssFilename,
       outFile,
-      includePaths: [`${dir.src}styles/`],
+      includePaths: [`${dir.src}styles/`, dir.nodeModules],
       sourceMap: false,
     }, (error, result) => { // node-style callback from v3.0.0 onwards
       if (error) {

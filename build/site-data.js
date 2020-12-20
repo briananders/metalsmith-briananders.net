@@ -2,7 +2,7 @@ module.exports = (dir) => {
   const pkg = require(`${dir.root}package.json`);
   const production = require(`${dir.build}production`);
 
-  const twitterHandle = 'iamBrianAnders';
+  const twitterHandle = 'imbanders';
   const twitter = `https://twitter.com/${twitterHandle}`;
 
   return {

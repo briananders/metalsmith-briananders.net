@@ -1,15 +1,11 @@
 nav.main {
-  background-color: var(--primary-color, #{$primary-color});
   border-radius: 0;
   margin: 0;
   transition-property: opacity;
   z-index: 5;
   position: fixed;
   width: 100%;
-
-  @include dark-mode {
-    background-color: var(--primary-color-dark, #{$primary-color-dark});
-  }
+  background-color: var(--primary-color-dark, #{$primary-color-dark});
 
   &.shadow,
   .mobile-nav-tray {
@@ -24,17 +20,13 @@ nav.main {
     padding: 0;
   }
 
-  .content {
+  .content, .container {
     overflow: visible;
     align-items: center;
     display: flex;
     justify-content: space-between;
     min-height: $s11;
-    background-color: var(--primary-color, #{$primary-color});
-
-    @include dark-mode {
-      background-color: var(--primary-color-dark, #{$primary-color-dark});
-    }
+    background-color: var(--primary-color-dark, #{$primary-color-dark});
   }
 
   .desktop-nav-links {
@@ -72,11 +64,7 @@ nav.main {
     height: $s10;
     transition-duration: $transition-speed;
     transition-timing-function: ease;
-    background-color: var(--primary-color, #{$primary-color});
-
-    @include dark-mode {
-      background-color: var(--primary-color-dark, #{$primary-color-dark});
-    }
+    background-color: var(--primary-color-dark, #{$primary-color-dark});
   }
   .mobile-active .mobile-nav-tray {
     top: 100%;
@@ -84,7 +72,7 @@ nav.main {
 
 
 
-  a[role] {
+  a {
     text-decoration: none;
     display: inline-block;
     color: $primary-color-text;
@@ -93,7 +81,7 @@ nav.main {
     font-weight: $regular;
     position: relative;
 
-    + a[role] {
+    + a {
       margin-left: $s4;
     }
     &.brand {
@@ -113,11 +101,6 @@ nav.main {
     &::before {
       background-color: $primary-color-text;
     }
-
-    &:hover,
-    &:focus {
-      color: $primary-color-text;
-    }
   }
 
 
@@ -125,7 +108,7 @@ nav.main {
 
   @include mq(600px) {
 
-    .content {
+    .content, .container {
       border-bottom: none;
     }
     .desktop-nav-links {

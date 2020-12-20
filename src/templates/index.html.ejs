@@ -1,7 +1,7 @@
 ---
 title: "Home"
 altTitle: "Hi, I'm Brian."
-description: "Brian Anders is a Senior UX Engineer at Google"
+description: "Brian Anders is a Staff UX Engineer at Google"
 priority: 1.0
 pageClasses:
   - 'main'
@@ -22,7 +22,7 @@ styles:
       </h2>
     </header>
     <p>
-      I am a Senior UX Engineer at <a href="https://google.com">Google</a>. From 2013 to 2018, I worked on <a href="https://nest.com">nest.com</a>. Since 2018 I have been working on the <a href="https://store.google.com">Google Store</a>; building and improving the web experience.
+      I am a Staff UX Engineer at <%- externalLink("Google", { href: "https://google.com" }) %>. From 2013 to 2018, I worked on <%- externalLink("nest.com", { href: "https://nest.com" }) %>. Since 2018 I have been working on the <%- externalLink("Google Store", { href: "https://store.google.com" }) %>; building and enhancing the web experience.
     </p>
     <p>
       Outside of work, I listen to music, play some instruments, do some camping, and more or less try to enjoy the life I lead.
@@ -34,15 +34,12 @@ styles:
           { copy: 'Last.fm', url: locals.lastfm, },
           { copy: 'Github', url: locals.github, },
           { copy: 'LinkedIn', url: locals.linkedin, },
-        ].map(item => {
-          return `
-          <a href="${item.url}"
-            itemprop="url"
-            target="blank"
-            rel="noopener">
-            ${item.copy}
-          </a>`;
-        });
+        ].map(item => externalLink(item.copy, {
+          href: item.url,
+          itemprop: "url",
+          target: "blank",
+          rel: "noopener",
+        }));
       %>
       <%- contactLinks.join(', ') %>.
     </p>
@@ -58,36 +55,12 @@ styles:
       </h2>
     </header>
   </div>
-  <ul id="thoughts-list" class="content">
-    <%
-      const basePages = getChildPages('thoughts');
-      const newestPages = basePages.sort((pageA, pageB) => {
-        const dateA = new Date(pageA.data.date);
-        const dateB = new Date(pageB.data.date);
-        return (dateA < dateB) ? 1 : -1;
-      });
-      newestPages.slice(0,4).forEach(({ url, data: { date, description, title }}) => {
-    %>
-    <li itemscope itemtype="http://schema.org/BlogPosting">
-      <a itemprop="url" href="/<%- url %>">
-        <h3 itemprop="name"><%- noWidows(title) %></h3>
-        <figcaption itemprop="description">
-          <%- noWidows(description) %>
-        </figcaption>
-        <date itemprop="datePublished" content="<%- date %>">
-          <%- formattedDate(date) %>
-        </date>
-        <meta itemprop="author" content="Brian Anders"/>
-        <meta itemprop="publisher" content="Brian Anders"/>
-      </a>
-    </li>
-    <% }); %>
-  </ul>
+  <%- partial('thoughts-list', Object.assign(locals, { thoughtCount: 6 })) %>
   <div class="content center">
-    <a itemprop="url" href="/thoughts/"
-        class="button">
-      See more
-    </a>
+    <%- link('More thoughts', {
+      href: "/thoughts/",
+      class: "button",
+    }) %>
   </div>
 </section>
 
@@ -104,10 +77,10 @@ styles:
     </header>
     <div class='last-fm-module p' data-type="albums"></div>
     <div class="center">
-      <a itemprop="url" href="/thoughts/last-fm/"
-         class="button">
-        See more
-      </a>
+    <%- link('More music details', {
+      href: "/thoughts/last-fm/",
+      class: "button",
+    }) %>
     </div>
   </div>
 </section>
@@ -120,23 +93,29 @@ styles:
         <%- noWidows("What I've been screaming into the abyss."); %>
       </h2>
       <p class="center">
-        &#61;&#61;&gt; <a href="<%- locals.twitter %>?ref_src=twsrc%5Etfw"
-          itemprop="url"
-          target="blank"
-          rel="noopener">
-          @<%- locals.twitterHandle %>
-        </a> &lt;&#61;&#61;
+        &#61;&#61;&gt;
+        <%- externalLink(`@${locals.twitterHandle}`, {
+          href: `${locals.twitter}?ref_src=twsrc%5Etfw`
+        }) %>
+        &lt;&#61;&#61;
       </p>
     </header>
     <p>
-      <a class="twitter-timeline"
-        href="<%- locals.twitter %>?ref_src=twsrc%5Etfw"
-        itemprop="url"
-        target="blank"
-        rel="noopener">
-        Tweets by @<%- locals.twitterHandle %>
-      </a>
+      <%- externalLink(`Tweets by @${locals.twitterHandle}`, {
+        class: "twitter-timeline",
+        href: `${locals.twitter}?ref_src=twsrc%5Etfw`,
+        'data-height': "800",
+        'data-theme': "light",
+      }) %>
     </p>
   </div>
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script>
+    (function() {
+      const timelineElement = document.querySelector('.twitter-timeline[data-theme]');
+      if(matchMedia('(prefers-color-scheme: dark)').matches) {
+        timelineElement.dataset.theme = 'dark';
+      }
+    })();
+  </script>
+  <script async defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </section>

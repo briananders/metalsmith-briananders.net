@@ -38,8 +38,8 @@ styles:
   <p>Now, try some out! There are no stars with less than 5 points, and your computer will freeze if you try to calculate more than 20,000 point stars. The square brackets at the bottom will list the skip pattern you can follow to draw the various stars. Send me a picture of your 20,000 pointed star with a skip pattern of 9,999!</p>
 
   <form class="center">
-    <span>Number of points (5 - 20,000):</span>
-    <input id="n" type="number" value="5" min="5" max="20000" step="1" />
+    <span id="number-of-points-describer">Number of points (5 - 20,000):</span>
+    <input id="n" type="number" value="5" min="5" max="20000" step="1" aria-labelledby="number-of-points-describer"/>
     <span id="up-and-down">
       <button type="button" value="1">&#x25B2;</button>
       <button type="button" value="-1">&#x25BC;</button>

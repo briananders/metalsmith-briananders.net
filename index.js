@@ -8,6 +8,7 @@ const dir = {
   package: `${__dirname}/package/`,
   build: `${__dirname}/build/`,
   jsOutputPath: `${__dirname}/package/scripts/`,
+  nodeModules: `${__dirname}/node_modules/`,
 };
 
 const completionFlags = {
@@ -30,14 +31,14 @@ const debug = process.argv.includes('--verbose');
 
 const timestamp = require(`${dir.build}timestamp`);
 const fs = require('fs-extra');
+const chokidar = require('chokidar');
 const express = require('express');
 const serve = require('express-static');
 const EventEmitter = require('events');
 const production = require(`${dir.build}production`);
 const app = express();
 const buildEvents = new EventEmitter();
-const exec = require('child_process').exec;
-
+const { exec } = require('child_process');
 
 const hashingFileNameList = {};
 const pageMappingData = [];
@@ -49,11 +50,9 @@ const configs = {
   dir,
   hashingFileNameList,
   pageMappingData,
-}
-
+};
 
 // /////////////////////////////// compile tasks /////////////////////////////////
-
 
 const bundleSCSS = require(`${dir.build}bundle-scss`);
 const bundleJS = require(`${dir.build}bundle-js`);
@@ -71,66 +70,43 @@ const compressImages = require(`${dir.build}compress-images`);
 const gzipFiles = require(`${dir.build}gzip-files`);
 const checkDone = require(`${dir.build}check-done`);
 
-
 // /////////////////////////////////////// event listeners ////////////////////////////////////////
-
 
 buildEvents.on('page-mapping-data-compiled', bundleEJS.bind(this, configs));
 buildEvents.on('page-mapping-data-compiled', sitemap.bind(this, configs));
 
 if (!production) {
-
-  fs.watch(`${dir.src}js/`, {
-    recursive: true,
-  }, (evt, file) => {
+  chokidar.watch(`${dir.src}js/`).on('change', (evt, file) => {
     if (debug) console.log(`${timestamp.stamp()}: File modified: JavaScript: ${file}`.yellow);
     bundleJS(configs);
   });
 
-
-  fs.watch(`${dir.src}styles/`, {
-    recursive: true,
-  }, (evt, file) => {
+  chokidar.watch(`${dir.src}styles/`).on('change', (evt, file) => {
     if (debug) console.log(`${timestamp.stamp()}: File modified: SCSS: ${file}`.yellow);
     bundleSCSS(configs);
   });
 
-
-  fs.watch(`${dir.src}templates/`, {
-    recursive: true,
-  }, (evt, file) => {
+  chokidar.watch(`${dir.src}templates/`).on('change', (evt, file) => {
     if (debug) console.log(`${timestamp.stamp()}: File modified: Template: ${file}`.yellow);
     compilePageMappingData(configs);
   });
 
-
-  fs.watch(`${dir.src}partials/`, {
-    recursive: true,
-  }, (evt, file) => {
+  chokidar.watch(`${dir.src}partials/`).on('change', (evt, file) => {
     if (debug) console.log(`${timestamp.stamp()}: File modified: Partial: ${file}`.yellow);
     compilePageMappingData(configs);
   });
 
-
-  fs.watch(`${dir.src}layout/`, {
-    recursive: true,
-  }, (evt, file) => {
+  chokidar.watch(`${dir.src}layout/`).on('change', (evt, file) => {
     if (debug) console.log(`${timestamp.stamp()}: File modified: Layout: ${file}`.yellow);
     compilePageMappingData(configs);
   });
 
-
-  fs.watch(`${dir.src}images/`, {
-    recursive: true,
-  }, (evt, file) => {
+  chokidar.watch(`${dir.src}images/`).on('change', (evt, file) => {
     if (debug) console.log(`${timestamp.stamp()}: File modified: image: ${file}`.yellow);
     moveImages(configs);
   });
+  chokidar.watch(`${dir.build}`).on('change', (evt, file) => {
 
-
-  fs.watch(`${dir.build}`, {
-    recursive: true,
-  }, (evt, file) => {
     console.log(`${timestamp.stamp()}: Build file modified: ${file}\n\nRestart the server`.red);
     process.exit();
   });
@@ -154,9 +130,9 @@ if (!production) {
   buildEvents.on('image-compression-done', checkDone.bind(this, configs));
 }
 
-
-// ///////////////////////////////////////////// initializers ///////////////////////////////////////////////
-
+/* ////////////////////////////////////////////////////////////////////////// */
+/* ////////////////////////////// initializers ////////////////////////////// */
+/* ////////////////////////////////////////////////////////////////////////// */
 
 const clean = new Promise((resolve, reject) => {
   console.log(`${timestamp.stamp()}: clean()`);
@@ -171,6 +147,8 @@ const clean = new Promise((resolve, reject) => {
   });
 });
 
+console.log(`production: ${production}`);
+
 clean.then(() => {
   if (debug) console.log(`${timestamp.stamp()}: clean.then()`);
   fs.mkdirp(dir.package);
@@ -179,7 +157,6 @@ clean.then(() => {
   bundleSCSS(configs);
   moveImages(configs);
 });
-
 
 if (!production) {
   app.use(serve(dir.package));

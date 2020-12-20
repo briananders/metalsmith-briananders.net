@@ -106,11 +106,10 @@ const uploadFile = (fileName, index, fileList) => {
   return uploadPromise;
 };
 
-const uploadFiles = () => {
+const uploadFiles = (fileList) => {
   fs.chmodSync(dir.package, '0755');
-  const packageGlob = glob.sync(`${dir.package}**/*`);
 
-  return Promise.all(packageGlob.map(uploadFile));
+  return Promise.all(fileList.map(uploadFile));
 };
 
 const invalidateCloudFront = () => {
@@ -135,21 +134,50 @@ const invalidateCloudFront = () => {
   });
 };
 
+const alwaysSwapFiles = (fileName) => {
+  return [
+    /\.html$/,
+    /\.html\.gz$/,
+    /\.xml$/,
+    /\.xml\.gz$/,
+    /\.txt$/,
+    /\.ico$/
+  ].filter((regex) => regex.test(fileName)).length;
+};
+
 getS3Objects().then((data) => {
-  const fileList = data.Contents.map(({ Key }) => ({
-    Key,
-  }));
-  console.log(`${fileList.length} files found`);
-  return deleteS3Files(fileList);
-}).then((data) => {
-  console.log('Files Deleted');
-  return uploadFiles();
-}).then((values) => {
+  const s3FileList = data.Contents.map(({ Key }) => Key);
+
+  const packageGlob = glob.sync(`${dir.package}**/*`);
+
+  const s3DeleteList = s3FileList.filter((s3File) => {
+    return !packageGlob.includes(dir.package + s3File) ||
+      alwaysSwapFiles(s3File);
+  });
+
+  const toUploadList = packageGlob.filter((packageFile) => {
+    return !fs.lstatSync(packageFile).isDirectory() &&
+    (
+      !s3FileList.includes(packageFile.replace(dir.package, '')) ||
+      alwaysSwapFiles(packageFile)
+    );
+  });
+
+  console.log(`${s3DeleteList.length + toUploadList.length} files to change`);
+
+  const s3DeleteListTranslate = s3DeleteList.map((file) => ({ Key: file }));
+
+  return deleteS3Files(s3DeleteListTranslate).then(() => {
+    return uploadFiles(toUploadList);
+  });
+}).then(() => {
   console.log('Upload Complete');
 
   if (production) {
     invalidateCloudFront();
   }
+
+  console.log('Run `blc https://briananders.net -ro` to check for broken links');
 });
 
 // invalidateCloudFront();

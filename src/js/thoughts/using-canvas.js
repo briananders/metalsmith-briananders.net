@@ -1,3 +1,5 @@
+const { isDarkMode } = require('../_modules/dark-mode');
+
 module.exports = {
   init() {
     let canvasContext;
@@ -14,7 +16,8 @@ module.exports = {
 
     function ColorObject() {
       function randomColor() {
-        return Math.floor(Math.random() * 256);
+        const color = Math.floor(Math.random() * 128);
+        return (isDarkMode) ? color + 128 : color;
       }
 
       const alpha = Math.random();

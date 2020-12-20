@@ -1,0 +1,48 @@
+@import "./phone-shared";
+
+phone {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-top: 128%;
+}
+main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+dock {
+  padding-bottom: 4%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+app {
+  border-radius: 20%;
+  position: relative;
+  width: 20%;
+  height: 0;
+  padding-top: 20%;
+  float: left;
+  margin-left: 4%;
+  margin-top: 4%;
+}
+name {
+  top: 110%;
+  transform: translateY(-50%);
+  font-size: 2em;
+  line-height: 1.25em;
+}
+
+body {
+  @for $px from 48 to 2048 {
+    @if($px % 50 == 48) {
+      @include mq(#{$px}px) {
+        font-size: percentage($px * 62.5 / 100000);
+      }
+    }
+  }
+}
+

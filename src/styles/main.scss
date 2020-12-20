@@ -72,7 +72,7 @@ section {
   }
 }
 
-.content {
+.content, .container {
   position: relative;
   max-width: 1000px;
   margin-left: auto;
@@ -85,6 +85,10 @@ section {
     padding: 0 $s8;
     @include font-size(3);
   }
+}
+
+i {
+  font-style: italic;
 }
 
 *,
@@ -120,11 +124,7 @@ a:visited,
   text-decoration: none;
   transition-property: color, background-color;
   color: $primary-color-text;
-  background-color: var(--primary-color, #{$primary-color});
-
-  @include dark-mode {
-    background-color: var(--primary-color-dark, #{$primary-color-dark});
-  }
+  background-color: var(--primary-color-dark, #{$primary-color-dark});
 
   &::before {
     position: absolute;
@@ -134,21 +134,13 @@ a:visited,
     left: 51%;
     right: 51%;
     transition-property: left, right;
-    background-color: var(--primary-color, #{$primary-color});
-
-    @include dark-mode {
-      background-color: var(--primary-color-dark, #{$primary-color-dark});
-    }
+    background-color: var(--primary-color-dark, #{$primary-color-dark});
   }
 
   &:hover,
   &:focus,
   &:active {
-    background-color: var(--primary-color-dark, #{$primary-color-dark});
-
-    @include dark-mode {
-      background-color: var(--primary-color, #{$primary-color});
-    }
+    background-color: var(--primary-color, #{$primary-color});
 
     &::before {
       left: 0;
@@ -171,7 +163,7 @@ a:visited,
 
 }
 
-header.content {
+header.content, header.container {
   padding-bottom: $s6;
 
   p {
@@ -187,6 +179,13 @@ select {
   outline-color: var(--accent-color, #{$accent-color});
 }
 
+input,
+button,
+textarea,
+select {
+  border: 2px solid var(--primary-color-dark, #{$primary-color-dark});
+}
+
 a.button,
 a:visited.button,
 button.button {
@@ -199,22 +198,17 @@ button.button {
   font-weight: $bold;
   transition-property: background-color;
   color: $primary-color-text;
-  background-color: var(--primary-color, #{$primary-color});
-  border: 2px solid var(--primary-color, #{$primary-color});
+  background-color: var(--primary-color-dark, #{$primary-color-dark});
+  border: 2px solid var(--primary-color-dark, #{$primary-color-dark});
 
   @include dark-mode {
     background-color: transparent;
-    border-color: var(--primary-color-dark, #{$primary-color-dark});
   }
 
   &:hover,
   &:focus,
   &:active {
     background-color: var(--primary-color-dark, #{$primary-color-dark});
-
-    // @include dark-mode {
-    //   background-color: var(--primary-color-dark, #{$primary-color-dark});
-    // }
   }
 
   &::before {
@@ -248,6 +242,7 @@ img {
 
 p,
 .p {
+  width: 100%;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -263,7 +258,6 @@ select {
   appearance: menulist;
   border-radius: $border-radius;
   background-color: $google-grey-50;
-  border: 1px solid $divider-color;
 }
 
 date {
@@ -282,7 +276,6 @@ button, select {
   font-family: $sans-serif;
   border-radius: $border-radius;
   color: $primary-text-color;
-  border: 1px solid $divider-color;
   @include font-size(3);
   line-height: 25px; // override
   padding: 0 $s3;
@@ -290,11 +283,16 @@ button, select {
 
 button {
   color: $primary-color-text;
-  background-color: var(--primary-color, #{$primary-color});
+  background-color: var(--primary-color-dark, #{$primary-color-dark});
+  border: 2px solid var(--primary-color-dark, #{$primary-color-dark});
+
+  @include dark-mode {
+    background-color: transparent;
+  }
 
   &:hover,
-  &:active,
-  &:focus {
+  &:focus,
+  &:active {
     background-color: var(--primary-color-dark, #{$primary-color-dark});
   }
 }
@@ -357,25 +355,35 @@ blockquote {
   }
 }
 
+.block {
+  display: block;
+}
+
 .center {
   text-align: center;
   justify-content: center;
+}
+
+img.center {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 strong {
   font-weight: $bold;
 }
 
-list {
+list, [role=list] {
+  overflow: hidden;
   padding-left: $s6;
   margin-bottom: $s6;
 }
 
-list, item {
+list, [role=list], item, [role=listitem] {
   display: block;
 }
 
-item {
+item, [role=listitem] {
   margin-top: $s6;
 }
 

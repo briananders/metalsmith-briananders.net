@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible"                 content="IE=edge">
-<title><%- locals.name %></title>
+<title><%- locals.name %> | <%- locals.title %></title>
 <meta name="description"                           content="<%- locals.description %>">
 
 <meta http-equiv="content-type"                    content="text/html; charset=UTF-8">
@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable"          content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="mobile-web-app-capable"                content="yes">
-<meta name="keywords"                              content="Brian, Anders, Brian Anders, Engineer, UX Engineer, Senior UX Engineer, Nest, Google, Alphabet, Lamoni, Graceland University, Google Store">
+<meta name="keywords"                              content="Brian, Anders, Brian Anders, Engineer, UX Engineer, Senior UX Engineer, Staff UX Engineer, User Experience, User Experience Engineer, Senior User Experience Engineer, Staff User Experience Engineer, Nest, Google, Alphabet, Lamoni, Graceland University, Google Store">
 <meta name="description"                           content="<%- locals.description %>">
 <meta name="author"                                content="<%- locals.author %>">
 <meta name="viewport"                              content="width=device-width,initial-scale=1.0" />
@@ -27,8 +27,8 @@
 <!-- Twitter Card data -->
 <meta name="twitter:card"                          content="summary">
 <meta name="twitter:url"                           content="<%- locals.domain %><%- locals.path %>">
-<meta name="twitter:site"                          content="@brnandrs">
-<meta name="twitter:creator"                       content="@brnandrs">
+<meta name="twitter:site"                          content="@<%- locals.twitterHandle %>">
+<meta name="twitter:creator"                       content="@<%- locals.twitterHandle %>">
 <meta name="twitter:title"                         content="<%- locals.author %>">
 <meta name="twitter:description"                   content="<%- locals.description %>">
 <meta name="twitter:image"                         content="<%- locals.domain %>favicon_base.png">
@@ -79,7 +79,11 @@
 
 <link rel="preload" media="all" href="<%- fontApi %>" lazyload onload="this.onload=null;this.rel='stylesheet'" as="style">
 <% locals.styles.forEach((path) => { %>
-  <link rel="preload" media="all" href="/styles/<%- path %>.css" lazyload onload="this.onload=null;this.rel='stylesheet'" as="style">
+  <% if(path === 'main') { %>
+    <link rel="stylesheet" media="all" href="/styles/<%- path %>.css">
+  <% } else { %>
+    <link rel="preload" media="all" href="/styles/<%- path %>.css" lazyload onload="this.onload=null;this.rel='stylesheet'" as="style">
+  <% } %>
 <% }); %>
 
 <noscript>

@@ -1,0 +1,19 @@
+<% const closeButton = locals.closeButton || false; %>
+
+<phone>
+  <main>
+    <% for(let i = 0; i < 9; i++) { %>
+      <app><name>name</name></app>
+    <% } %>
+  </main>
+  <dock>
+    <% for(let i = 0; i < 4; i++) { %>
+      <app>
+        <name>name</name>
+        <% if (closeButton) { %>
+          <close>⨯</close>
+        <% } %>
+      </app>
+    <% } %>
+  </dock>
+</phone>

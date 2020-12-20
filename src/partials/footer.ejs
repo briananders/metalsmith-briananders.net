@@ -1,4 +1,4 @@
-<footer class="<%- (locals.pageClasses) ? locals.pageClasses.toString().replace(/,/g,' ') : '' %>">
+<footer class="<%- (locals.pageClasses) ? locals.pageClasses.toString().replace(/,/g,' ') : '' %>" role="navigation" aria-label="Site footer">
   <ul class="content">
     <li>
       <% const date = new Date(); %>
@@ -11,13 +11,9 @@
           { copy: 'Github', url: locals.github, },
           { copy: 'LinkedIn', url: locals.linkedin, },
         ].map(item => {
-          return `
-          <a href="${item.url}"
-            itemprop="url"
-            target="blank"
-            rel="noopener">
-            ${item.copy}
-          </a>`;
+          return externalLink(item.copy, {
+            href: item.url,
+          });
         });
       %>
       <%- contactLinks.join(' - ') %>

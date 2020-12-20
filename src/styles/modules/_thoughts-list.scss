@@ -1,34 +1,33 @@
 #thoughts-list {
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-around;
+  column-gap: $s5;
+  row-gap: $s10;
+  align-items: stretch;
+  justify-items: stretch;
+  margin-bottom: $s6;
 
-  li {
-    display: block;
-    margin: 0 auto $s10;
-    max-width: 640px;
+  @include mq($tablet) {
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: $s10;
+  }
 
-    @include mq($tablet) {
-      @include columns(6);
-      padding: 0 $s4;
-
-      &:nth-child(even) {
-        margin-left: $gutter;
-      }
-    }
+  @include mq($desktop) {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   figcaption {
     @include font-size(3);
     margin-bottom: $s2;
+    flex-grow: 1;
   }
 
   a,
   a:visited {
     overflow: hidden;
-    display: block;
+    display: flex;
+    flex-flow: column;
     text-decoration: none;
     position: relative;
     padding: 0 0 $s2;

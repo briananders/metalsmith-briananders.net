@@ -2,6 +2,7 @@ module.exports = {
   '*': require('./all'),
   '/': require('./homepage'),
   thoughts: {
+    yahtzee: require('./thoughts/yahtzee'),
     paint: require('./thoughts/paint'),
     minesweeper: require('./thoughts/minesweeper/index'),
     'using-canvas-to-make-patterns-with-circles': require('./thoughts/using-canvas'),
@@ -9,6 +10,7 @@ module.exports = {
     'raining-paint': require('./thoughts/raining-paint'),
     'lissajous-curve': require('./thoughts/lissajous-curve'),
     'last-fm': require('./thoughts/last-fm'),
+    'in-view-text-animation': require('./thoughts/in-view-text-animation'),
     'how-to-remove-spaces-around-inline-block-elements': require('./thoughts/how-to-remove-spaces-around-inline-block-elements'),
     'earth-rotating-sprite-animation': require('./thoughts/earth-rotating-sprite-animation'),
     'color-canvas': require('./thoughts/color-canvas'),

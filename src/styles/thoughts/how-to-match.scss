@@ -11,16 +11,16 @@ main.thoughts.how-to-match {
     margin-bottom: $s6;
   }
   .tall {
-    border-top: $base-unit solid var(--accent-color, #{$accent-color});
+    border-top: $s3 solid var(--accent-color, #{$accent-color});
   }
   .column-1 {
-    background-color: var(--primary-color, #{$primary-color});
+    background-color: $primary-text-color;
   }
   .column-2 {
     background-color: var(--primary-color-dark, #{$primary-color-dark});
   }
   .column-3 {
-    background-color: var(--primary-color, #{$primary-color});
+    background-color: $primary-text-color;
   }
   .column-1,
   .column-2,

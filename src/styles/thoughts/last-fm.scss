@@ -37,7 +37,7 @@ section {
     &:focus,
     &:hover {
       bar {
-        background-color: var(--primary-color-dark, #{$primary-color-dark});
+        background-color: var(--primary-color, #{$primary-color});
       }
 
       color: var(--primary-color-dark, #{$primary-color-dark});
@@ -62,7 +62,7 @@ section {
     bar {
       display: block;
       height: $s2;
-      background-color: var(--primary-color, #{$primary-color});
+      background-color: var(--primary-color-dark, #{$primary-color-dark});
       margin-top: $s1;
       transition-property: background-color;
       transition-duration: $transition-speed;

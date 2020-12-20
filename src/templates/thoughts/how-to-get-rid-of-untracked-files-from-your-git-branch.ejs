@@ -22,8 +22,9 @@ styles:
   </p>
 
   <%- code(
-`git clean`
-  ); %>
+`git clean`, {
+  language: 'excel',
+}); %>
 
   <p>
     <%- noWidows('Git clean, "Cleans the working tree by recursively removing files that are not under version control, starting from the current directory." There are flags that you can pass to extend the <var>git clean</var> functionality.'); %>
@@ -34,16 +35,18 @@ styles:
   </p>
 
   <%- code(
-`git clean -n`
-  ); %>
+`git clean -n`, {
+  language: 'excel',
+}); %>
 
   <p>
     <%- noWidows("<strong>-d</strong> will remove untracked directories as well as files. If an directory is managed by a different Git repo, it will not be removed."); %>
   </p>
 
   <%- code(
-`git clean -d`
-  ); %>
+`git clean -d`, {
+  language: 'excel',
+}); %>
 
   <p>
     <%- noWidows("<strong>-f</strong> will force the deletion of files or directory. So this is the option that I use the most just for simplicity."); %>
@@ -51,8 +54,9 @@ styles:
 
   <%- code(
 `git clean -f
-git clean -fd`
-  ); %>
+git clean -fd`, {
+  language: 'excel',
+}); %>
 
   <p>
     <%- noWidows("And if you want to clean out a certain directory - without deleting files in that directory that are tracked - you can provide a path as an argument."); %>
@@ -63,8 +67,9 @@ git clean -fd`
 git clean -n path/to/file
 git clean -d path/to/folder/or/file
 git clean -f path/to/file
-git clean -fd path/to/folder/or/file`
-  ); %>
+git clean -fd path/to/folder/or/file`, {
+  language: 'excel',
+}); %>
 
   <p>
     <%- noWidows("I hope this is helpful!"); %>

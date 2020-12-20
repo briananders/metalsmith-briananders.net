@@ -15,7 +15,7 @@ styles:
 <blockquote>
   An automaton (plural: automata or automatons) is a self-operating machine, or a machine or control mechanism designed to automatically follow a predetermined sequence of operations, or respond to predetermined instructions.
   <cite>
-    <a href='https://en.wikipedia.org/wiki/Automaton'>Wikipedia.org</a>
+    <%- externalLink("Wikipedia.org", { href: 'https://en.wikipedia.org/wiki/Automaton' }) %>
   </cite>
 </blockquote>
 
@@ -73,22 +73,22 @@ styles:
 
   <p>
     Here are some links to other resources if you want to dig deeper into the subject.
-    <list>
-      <item>
-        <a href="http://mathworld.wolfram.com/ElementaryCellularAutomaton.html" target="_blank" rel="noopener">Wolfram.com Elementary Cellular Automaton</a>
-      </item>
-      <item>
-        <a href="http://mathworld.wolfram.com/Rule30.html" target="_blank" rel="noopener">Rule 30</a>
-      </item>
-      <item>
-        <a href="https://en.wikipedia.org/wiki/Elementary_cellular_automaton" target="_blank" rel="noopener">Wikipedia.org Elementary Cellular Automaton</a>
-      </item>
-    </list>
+    <div role="list">
+      <div role="listitem">
+        <%- externalLink("Wolfram.com Elementary Cellular Automaton", { href: "http://mathworld.wolfram.com/ElementaryCellularAutomaton.html" }) %>
+      </div>
+      <div role="listitem">
+        <%- externalLink("Rule 30", { href: "http://mathworld.wolfram.com/Rule30.html" }) %>
+      </div>
+      <div role="listitem">
+        <%- externalLink("Wikipedia.org Elementary Cellular Automaton", { href: "https://en.wikipedia.org/wiki/Elementary_cellular_automaton" }) %>
+      </div>
+    </div>
   </p>
 
   <form class="center p">
     <span>Rule number from 0 to 255:</span>
-    <input id="rule" value="90" type="number" min="0" max="255" step="1"/>
+    <input id="rule" value="90" type="number" min="0" max="255" step="1" aria-label="Rule number"/>
     <span id="rule-up-and-down">
       <button type="button" value="1">&#x25B2;</button>
       <button type="button" value="-1">&#x25BC;</button>
@@ -97,7 +97,7 @@ styles:
 
   <form class="center p">
     <span>Height:</span>
-    <input id="height" value="128" type="number" min="1" max="255" step="10"/>
+    <input id="height" value="128" type="number" min="1" max="255" step="10" aria-label="Number of visible lines"/>
     <span id="height-up-and-down">
       <button type="button" value="10">&#x25B2;</button>
       <button type="button" value="-10">&#x25BC;</button>

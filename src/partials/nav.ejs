@@ -1,27 +1,27 @@
-<nav class="nav main" role="menu">
+<nav class="nav main" role="navigation" aria-label="Main navigation">
   <div class="content">
-    <a class="brand" itemprop="url" role="menuitem" href="/"><%- locals.name %></a>
+    <%- link(locals.name, { class: "brand", href: "/", }) %>
     <div class="desktop-nav-links">
-      <a itemprop="url" role="menuitem" href="/">Home</a>
+      <%- link("Home", { href: "/" }) %>
       <%
         var basePages = getChildPages('');
         for(var i = 0; i < basePages.length; i++) {
           var page = basePages[i];
       %>
-        <a itemprop="url" role="menuitem" href="/<%- page.url %>"><%- page.data.title %></a>
+        <%- link(page.data.title, { href: `/${page.url}` }) %>
       <% } %>
     </div>
     <button id="activate-menu" class="menu link" aria-expanded="false">
       Menu
     </button>
     <div class="mobile-nav-tray" aria-hidden="true">
-      <a itemprop="url" role="menuitem" href="/">Home</a>
+      <%- link("Home", { href: "/" }) %>
       <%
         var basePages = getChildPages('');
         for(var i = 0; i < basePages.length; i++) {
           var page = basePages[i];
       %>
-        <a itemprop="url" role="menuitem" href="/<%- page.url %>"><%- page.data.title %></a>
+        <%- link(page.data.title, { href: `/${page.url}` }) %>
       <% } %>
     </div>
   </div>
