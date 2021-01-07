@@ -1,9 +1,14 @@
+<link rel="preload" media="all" href="/styles/modules/header.css" lazyload onload="this.onload=null;this.rel='stylesheet'" as="style">
+<noscript>
+  <link rel="stylesheet" media="all" href="/styles/modules/header.css">
+</noscript>
+
 <div id="skip-nav" tabindex="-1" data-state=inactive>
   <button>Skip navigation</button>
 </div>
 <%- partial('nav', locals); %>
-<header lazy data-lazy-style="background-image: var(--background-image);" class="main-header <%- locals.withHead ? 'with-head' : 'without-head' %> <%- (locals.pageClasses) ? locals.pageClasses.toString().replace(/,/g,' ') : '' %>">
-  <% if(!locals.withHead) { %>
+<% if(!locals.homepage) { %>
+  <header class="main-header <%- (locals.pageClasses) ? locals.pageClasses.toString().replace(/,/g,' ') : '' %>">
     <h1 itemprop="title" class="name content">
       <% if (locals.altTitle !== undefined) { %>
         <%- locals.altTitle %>
@@ -11,5 +16,5 @@
         <%- locals.title %>
       <% } %>
     </h1>
-  <% } %>
-</header>
+  </header>
+<% } %>

@@ -1,4 +1,4 @@
-@import "lib/base-styles";
+@import "system/utilities";
 
 
 article {
@@ -17,33 +17,27 @@ a.movie {
   margin-bottom: $s4;
   transition-property: color;
   background-color: transparent;
-  color: $primary-text-color;
+  color: $pallette--primary-text-color;
 
   @include dark-mode {
-    color: $primary-color-text;
+    color: $pallette--primary-color-text;
 
     &::before {
-      background-color: $primary-color-text;
+      background-color: $pallette--primary-color-text;
     }
   }
 
   &:hover,
   &:focus {
     background-color: transparent;
-    color: var(--primary-color-dark, #{$primary-color-dark});
+    color: var(--primary-color-dark, #{$pallette--primary-color-dark});
 
     @include dark-mode {
-      color: $primary-color-text;
+      color: $pallette--primary-color-text;
     }
   }
 
-  h3 {
+  p.h4 {
     margin-bottom: $s2;
-  }
-
-  h6 {
-    @include font-size();
-    font-family: $sans-serif;
-    font-weight: $bold;
   }
 }

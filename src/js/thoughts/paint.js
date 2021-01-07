@@ -146,7 +146,6 @@ module.exports = {
       canvasContext.closePath();
     }
 
-
     function draw({
       offsetX,
       movementX,
@@ -159,7 +158,6 @@ module.exports = {
       }
     }
 
-
     function drawOn(...args) {
       canDraw = true;
       draw(...args);
@@ -169,22 +167,19 @@ module.exports = {
       canDraw = false;
     }
 
-
     function erase() {
       setCanvasDimensions();
     }
-
 
     function updateColor() {
       mainColor.dataset.color = currentColor.name;
     }
 
-
     function updateStroke() {
       mainStroke.dataset.stroke = diameter;
       mainStroke.querySelector('span').innerHTML = `${diameter}px`;
+      mainStroke.setAttribute('style', `--stroke: ${diameter}px`);
     }
-
 
     function updateSlider() {
       if (isSliding) {
@@ -195,7 +190,6 @@ module.exports = {
       }
     }
 
-
     function slideOn() {
       isSliding = true;
       updateSlider();
@@ -204,7 +198,6 @@ module.exports = {
     function slideOff() {
       isSliding = false;
     }
-
 
     function setupColorSamples() {
       const colorPallette = document.querySelector('.color-pallette');
@@ -220,7 +213,6 @@ module.exports = {
         }, false);
       });
     }
-
 
     function addEventListeners() {
       const supportsOrientationChange = 'onorientationchange' in window;
@@ -246,7 +238,6 @@ module.exports = {
 
       setupColorSamples();
     }
-
 
     setCanvasDimensions();
     addEventListeners();

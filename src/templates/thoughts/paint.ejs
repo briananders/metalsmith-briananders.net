@@ -14,19 +14,21 @@ styles:
 </canvas>
 
 <div class="content">
-  <div class="color-pallette">
+  <div class="color-pallette p">
     <main-color class="color"></main-color>
     <%# colors filled by js %>
   </div>
 
-  <div class="stroke-size-pallette">
+  <div class="stroke-size-pallette p">
+    <div class="slider-container">
+      <input id="stroke-slider" type="range" min="1" max="200" value="5" step="1" aria-label="Stroke size">
+    </div>
     <main-stroke>
       <span>1px</span>
     </main-stroke>
-    <input id='stroke-slider' type="range" min="1" max="200" value="5" step="1" aria-label="Stroke size">
   </div>
 
-  <div class='shape-pallette'>
+  <div class="shape-pallette p">
     <label>
       <input id=circle type=radio name=shape value=circle checked=checked /> Circle
     </label>

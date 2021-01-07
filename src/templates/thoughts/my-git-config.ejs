@@ -67,10 +67,14 @@ styles:
 
   <ul class="p">
     <li style="margin-bottom: 12px;">
-      <a href="<%- explainShell(klean) %>" target="_blank" rel="noopener">git klean explanation</a>
+      <%- externalLink('git klean explanation', {
+        href: explainShell(klean),
+      }) %>
     </li>
     <li>
-      <a href="<%- explainShell(kleanD) %>" target="_blank" rel="noopener">git kleanD explanation</a>
+      <%- externalLink('git kleanD explanation', {
+        href: explainShell(kleanD),
+      }) %>
     </li>
   </ul>
 

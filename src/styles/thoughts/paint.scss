@@ -1,10 +1,9 @@
-@import "lib/base-styles";
+@import "system/utilities";
 
 canvas {
   width: 100vw;
-  border: 1px solid gray;
-  box-sizing: border-box;
-  height: calc(100vh - 66px);
+  border: 1px solid;
+  height: calc(90vh - 66px);
   background-color: white;
 }
 
@@ -12,69 +11,90 @@ canvas {
   display: none;
 }
 
-.stroke-size-pallette,
-.shape-pallette,
-.color-pallette {
-  margin-left: 30px;
-  margin-right: 30px;
-  max-width: 430px;
-  margin-top: 10px;
-  position: relative;
-  padding-left: 50px;
-  height: 50px;
-
-  main-color,
-  main-stroke {
-    box-shadow: inset 0 0 1px;
-    width: 50px;
-    height: 50px;
-    display: block;
-    position: absolute;
-    left: 0;
-    border: 2px solid white;
-  }
+main-color,
+main-stroke {
+  box-shadow: inset 0 0 1px;
+  display: block;
+  border: 1px solid;
 }
 
 .color-pallette {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(8, 36px);
+  grid-template-rows: repeat(3, 36px);
+
+  @include mq($medium) {
+    grid-template-columns: repeat(12, 36px);
+    grid-template-rows: repeat(2, 36px);
+  }
+
+  main-color {
+    grid-row: span 3;
+    grid-column: span 2;
+
+    @include mq($medium) {
+      grid-row: span 2;
+      grid-column: span 2;
+    }
+  }
+
   color-sample {
-    display: block;
-    width: 25px;
-    box-sizing: border-box;
-    height: 25px;
-    float: left;
-    border: 2px solid white;
+    border: 1px solid;
     box-shadow: inset 0 0 1px;
     cursor: pointer;
   }
 }
 
+.stroke-size-pallette {
+  display: flex;
+  justify-content: center;
+}
+
 main-stroke {
-  &::after {
+  min-width: 72px;
+  min-height: 72px;
+  padding: $s1;
+  display: flex;
+  flex-flow: column;
+
+  &::before {
     content: '';
     display: block;
     background-color: black;
     border-radius: 100%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    left: 50%;
-    top: calc(50% - 8px);
-    height: 15px;
-    width: 15px;
+    height: var(--stroke, #{$s2});
+    width: var(--stroke, #{$s2});
+    margin: auto;
+    box-shadow: 0 0 0px 1px currentColor;
   }
 
   span {
-    position: absolute;
-    bottom: 0;
     width: 100%;
-    display: inline-block;
-    font-size: 13px;
+    display: block;
     text-align: center;
+    align-self: flex-end;
   }
 }
 
+$slider-width: 150px;
+$slider-height: 20px;
+
+.slider-container {
+  display: block;
+  position: relative;
+  width: $slider-height;
+  height: $slider-width;
+  margin-right: $s4;
+}
+
 #stroke-slider {
-  float: left;
-  height: 50px;
-  margin: 0 15px;
-  width: calc(100% - 37px);
+  position: absolute;
+  height: $slider-height;
+  margin: 0;
+  width: $slider-width;
+  transform: rotate(-90deg);
+  bottom: 0;
+  left: 0;
+  transform-origin: 10px center;
 }

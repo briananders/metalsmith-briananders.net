@@ -13,7 +13,7 @@ styles:
 
 <div class="content">
   <p>
-    I play a Yahtzee knock off on my phone, and it is clearly making adjustments because there are levels of difficulty. I like creating games (check out <a href="/thoughts/minesweeper/">minesweeper</a>) and this one seemed like a fun challenge. It's a dice game, and my focus was on getting the logic down. So, enjoy!
+    I play a Yahtzee knock off on my phone, and it is clearly making adjustments because there are levels of difficulty. I like creating games (check out <%- link('minesweeper', { href: '/thoughts/minesweeper/' }) %>) and this one seemed like a fun challenge. It's a dice game, and my focus was on getting the logic down. So, enjoy!
   </p>
   <p>
     According to <%- externalLink("Wikipedia", { href: "https://en.wikipedia.org/wiki/Yahtzee" }) %>, Yahtzee is owned by <%- externalLink("Hasbro", { href: "https://shop.hasbro.com/en-us" }) %> and they have an
@@ -23,7 +23,7 @@ styles:
 </div>
 
 <div class="content game-container">
-  <button type=button id=roll data-rolls-left=3>Roll</button>
+  <button type=button id=roll data-rolls-left=3 class="button">Roll</button>
 
   <div id=dice>
     <% for (let i = 0; i < 5; i++) { %>

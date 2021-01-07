@@ -1,6 +1,6 @@
 ---
 title: "Ten Star Movies"
-description: "I've been watching movies my whole life. I enjoy them quite a lot. I use IMDb to rate movies, so I use their ten star system. Here is a list of movies that I have rated at ten stars. See my imdb profile for more ratings."
+description: "I've been watching movies my whole life. I enjoy them quite a lot. I use IMDb to rate movies, so I use their ten star system. Here is a list of movies that Brian has rated at ten stars. See my imdb profile for more ratings."
 date: 2016-11-16
 priority: 0.8
 layout: base
@@ -383,16 +383,15 @@ styles:
     const movie = movies[i];
 %>
 
-  <a id="<%- movie.name.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase(); %>"
-     class="movie"
-     itemprop="url"
-     href="https://www.imdb.com/title/<%- movie.imdb.id %>/"
-     target="blank"
-     rel="noopener">
-    <img lazy src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="<%- movie.imgSrc %>" alt="<%- movie.name %>"/>
-    <h3><%- movie.name %></h3>
-    <h6>(<%- movie.imdb.year %>)</h6>
-  </a>
+  <%- externalLink(`
+    <img lazy src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="${movie.imgSrc}" alt="${movie.name}"/>
+    <h2 class="h3">${movie.name}</h2>
+    <p class="h4">(${movie.imdb.year})</p>
+  `, {
+    id: movie.name.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase(),
+    class: 'movie block',
+    href: `https://www.imdb.com/title/${movie.imdb.id}`,
+  }) %>
 
 <% } %>
 </article>

@@ -14,11 +14,11 @@ styles:
 <article class="content" itemscope itemtype="http://schema.org/BlogPosting">
 
   <p>
-    <%- noWidows('<strong>TL;DR:</strong> <a href="https://git-scm.com/docs/git-clean">git clean</a> documentation here.'); %>
+    <%- noWidows(`<strong>TL;DR:</strong> ${externalLink('git clean', { href: 'https://git-scm.com/docs/git-clean' })} documentation here.`); %>
   </p>
 
   <p>
-    <%- noWidows("If you have ever changed branches in Git, to find a lot of extra files that don't belong on the branch, here's what you need to know. It's not fun to manually delete every file or directory. In the past I have seen people <var>rm</var> and then <var>git checkout</var> whole folders to clean up extra untracked files. Thankfully, there's this better way - built into Git, even!"); %>
+    <%- noWidows("If you have ever changed branches in Git, to find a lot of extra files that don't belong on the branch, here's what you need to know. It's not fun to manually delete every file or directory. In the past Brian has seen people <var>rm</var> and then <var>git checkout</var> whole folders to clean up extra untracked files. Thankfully, there's this better way - built into Git, even!"); %>
   </p>
 
   <%- code(

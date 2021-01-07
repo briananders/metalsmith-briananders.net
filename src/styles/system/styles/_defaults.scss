@@ -1,0 +1,10 @@
+* {
+  transition-timing-function: ease;
+
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+    outline: none;
+  }
+}

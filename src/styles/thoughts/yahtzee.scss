@@ -1,4 +1,4 @@
-@import "lib/base-styles";
+@import "system/utilities";
 
 .thoughts.yahtzee {
   display: grid;
@@ -34,33 +34,34 @@
 
     &.locked {
       opacity: .7;
-      pointer-events: none;
+      pointer-events: none !important;
     }
   }
 
   #dice {
-    display: flex;
+    display: grid;
     justify-content: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: $s2;
 
     button {
+      @include button;
       height: 37px;
+      padding: 0 $s2;
     }
   }
 
   [id^="die-"] {
     &[value="0"] {
-      pointer-events: none;
+      pointer-events: none !important;
     }
     &.locked {
-      border-color: currentColor;
-    }
-    &:not(:last-child) {
-      margin-right: $s2;
+      border-color: transparent !important;
     }
   }
 
   .locked button {
-    pointer-events: none;
+    pointer-events: none !important;
     border-color: transparent !important;
   }
 
@@ -72,10 +73,10 @@
       font-size: 50%;
       top: 0;
       left: 0;
-      background-color: $primary-text-color;
-      color: $primary-color-text;
+      background-color: $pallette--primary-text-color;
+      color: $pallette--primary-color-text;
       max-width: 100%;
-      box-shadow: 0 0 $s1;
+      border: 2px solid var(--primary-color-dark, #{$pallette--primary-color-dark});
       border-radius: $s1;
       padding: 0 $s1;
     }
@@ -86,17 +87,14 @@
     grid-template-columns: 1fr;
     grid-gap: $s2;
 
-    @include mq(600px) {
+    @include mq($medium) {
       grid-template-columns: 1fr 1fr;
     }
+  }
 
-    &[data-rolls-left="3"] {
-      button {
-        pointer-events: none;
-      }
-      & + #dice [id^="die-"] {
-        pointer-events: none;;
-      }
+  [data-rolls-left="3"] {
+    button {
+      pointer-events: none !important;
     }
   }
 
@@ -109,11 +107,11 @@
     }
   }
   .score {
+    @include button;
     min-width: 72px;
     text-align: center;
     margin-left: $s2;
     display: inline-block;
-    @include font-size(3);
     padding: 0 $s3;
     font-family: $sans-serif;
   }
@@ -122,8 +120,17 @@
     display: flex;
     justify-content: space-between;
 
-    @include mq(600px) {
+    @include mq($medium) {
       width: calc(50% - #{$s1});
+    }
+  }
+
+  #kind-total,
+  #bonus,
+  #total {
+    .score {
+      pointer-events: none !important;
+      border-color: transparent !important;
     }
   }
 }

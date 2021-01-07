@@ -3,7 +3,7 @@
 module.exports = {
   init() {
     const rollElement = document.getElementById('roll');
-    // const diceElement = document.getElementById('dice');
+    const diceElement = document.getElementById('dice');
     const die0Element = document.getElementById('die-0');
     const die1Element = document.getElementById('die-1');
     const die2Element = document.getElementById('die-2');
@@ -356,6 +356,7 @@ module.exports = {
     function updateRollCounter() {
       rollElement.setAttribute('data-rolls-left', 3 - rollCount);
       scoreBoardElement.setAttribute('data-rolls-left', 3 - rollCount);
+      diceElement.setAttribute('data-rolls-left', 3 - rollCount);
       if (rollCount >= 3) {
         disable(rollElement);
       } else {

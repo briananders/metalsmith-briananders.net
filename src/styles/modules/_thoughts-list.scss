@@ -8,12 +8,12 @@
   justify-items: stretch;
   margin-bottom: $s6;
 
-  @include mq($tablet) {
+  @include mq($medium) {
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: $s10;
   }
 
-  @include mq($desktop) {
+  @include mq($large) {
     grid-template-columns: repeat(3, 1fr);
   }
 
@@ -23,23 +23,9 @@
     flex-grow: 1;
   }
 
-  a,
-  a:visited {
-    overflow: hidden;
+  a {
     display: flex;
     flex-flow: column;
-    text-decoration: none;
-    position: relative;
-    padding: 0 0 $s2;
-    color: $primary-text-color;
-    background-color: transparent;
-
-    @include dark-mode {
-      color: $primary-color-text;
-
-      &:before {
-        background-color: $primary-color-text;
-      }
-    }
+    padding-bottom: 6px;
   }
 }

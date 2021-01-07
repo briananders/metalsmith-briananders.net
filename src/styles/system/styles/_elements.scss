@@ -1,0 +1,159 @@
+@import "../utilities";
+
+i {
+  @include italic;
+}
+
+main {
+  overflow: hidden;
+  @include margin-center;
+}
+
+section {
+  @include section;
+}
+
+main {
+  z-index: 1;
+  position: relative;
+  transition-property: right;
+  right: 0;
+}
+
+html {
+  @include html;
+
+  @include selection;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  @include type--body;
+}
+
+p {
+  @include paragraph;
+
+  a {
+    @include inline-link;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include type--headings;
+
+  a,
+  a:visited {
+    @include type--heading-link;
+  }
+}
+
+h1 {
+  @include type--heading-1;
+}
+
+h2 {
+  @include type--heading-2;
+}
+
+h3 {
+  @include type--heading-3;
+}
+
+h4 {
+  @include type--heading-4;
+}
+
+h5 {
+  @include type--heading-5;
+}
+
+h6 {
+  @include type--heading-6;
+}
+
+img {
+  max-width: 100%;
+}
+
+cite {
+  @include citation;
+}
+
+blockquote {
+  @include quotation;
+}
+
+strong {
+  font-weight: $bold;
+}
+
+select {
+  appearance: menulist;
+  border-radius: $border-radius;
+  background-color: $color--grey-50;
+
+  @include button-select;
+}
+
+date {
+  text-align: right;
+  display: block;
+  @include type--bold-serif;
+}
+
+label {
+  @include label;
+}
+
+button,
+select {
+  @include button-select;
+}
+
+list {
+  @include list;
+}
+
+item {
+  @include list-item;
+}
+
+a,
+input,
+button,
+textarea,
+select {
+  @include interactive-outline;
+  @include interactive;
+}
+
+input,
+button,
+textarea,
+select {
+  @include interactive-border;
+}
+
+a {
+  @include link-image-setup;
+}
+
+select,
+input[type=text],
+input[type=number] {
+  @include input;
+}
+
+input[type=text],
+input[type=number] {
+  height: 33px;
+  @include font-size;
+  padding: 0 $s1;
+}
+
+input[type=checkbox] {
+  height: $s4;
+  width: $s4;
+}

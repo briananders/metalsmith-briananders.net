@@ -1,0 +1,9 @@
+@import "./defaults";
+@import "./spaces";
+@import "./viewports";
+
+$grid--gutter: percentage($s3/$large);
+$grid--column: percentage($s10/$large);
+$grid--start-break-point: $medium;
+$grid--copy-max-width: $s1 * 100; // 1020px
+$grid--max-width: $s1 * 220; // 1320px

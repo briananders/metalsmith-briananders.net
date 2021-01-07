@@ -1,0 +1,233 @@
+@import "../variables/all";
+
+@mixin html {
+  min-height: 100%;
+  font-size: 62.5%;
+  position: relative;
+  @include type--regular-serif;
+  @include font-size;
+  overflow-x: hidden;
+  @include pallette--base;
+}
+
+@mixin selection {
+  ::selection,
+  ::-moz-selection {
+    text-shadow: none;
+    @include pallette--base--inverted;
+  }
+}
+
+@mixin section {
+  max-width: $grid--max-width;
+  @include margin-center;
+  margin-bottom: $section-spacer;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin input {
+  min-width: $s10;
+}
+
+@mixin inline-link {
+  padding: 0 $s1;
+  display: inline-block;
+  text-decoration: none;
+  transition-property: color, background-color;
+  @include pallette--primary;
+
+  &:hover,
+  &:focus,
+  &:active {
+    @include pallette--primary--active;
+  }
+}
+
+@mixin block-link {
+  padding: 0 $s1;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  transition-property: color, background-color;
+  @include pallette--base;
+
+  &::before {
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    content: "";
+    left: 51%;
+    right: 51%;
+    transition-property: left, right;
+    background-color: var(--primary-text-color, #{$pallette--primary-text-color});
+
+    @include dark-mode {
+      background-color: var(--primary-color-text, #{$pallette--primary-color-text});
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    &::before {
+      left: 0;
+      right: 0;
+      transition-duration: $transition-speed;
+      transition-timing-function: ease;
+    }
+  }
+}
+
+@mixin link-image-setup {
+  img {
+    @include link-image;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    img {
+      @include link-image-active;
+    }
+  }
+}
+
+@mixin link-image {
+}
+
+@mixin link-image-active {
+  @include hue-rotate;
+}
+
+@mixin interactive {
+  cursor: pointer;
+  text-decoration: none;
+  @include interactive-outline;
+  transition-duration: $transition-speed;
+  transition-timing-function: ease;
+}
+
+@mixin interactive-outline {
+  outline-color: var(--accent-color, #{$pallette--accent-color});
+}
+
+@mixin interactive-border {
+  border: 2px solid var(--primary-color-dark, #{$pallette--primary-color-dark});
+}
+
+@mixin button {
+  text-align: center;
+  display: inline-block;
+  padding: $s2 $s6;
+  border-radius: $border-radius;
+  text-decoration: none;
+  font-family: $sans-serif;
+  font-weight: $bold;
+  transition-property: background-color;
+  color: $pallette--primary-color-text;
+  background-color: var(--primary-color-dark, #{$pallette--primary-color-dark});
+  border: 2px solid var(--primary-color-dark, #{$pallette--primary-color-dark});
+
+  @include dark-mode {
+    background-color: transparent;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--primary-color-dark, #{$pallette--primary-color-dark});
+  }
+
+  &::before {
+    height: 0;
+  }
+}
+
+@mixin paragraph {
+  width: 100%;
+  max-width: $grid--copy-max-width;
+  @include margin-center;
+  margin-bottom: $s6;
+  @include font-size(3);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin paragraph-margin {
+  &,
+  &:last-child {
+    margin-bottom: $s6;
+  }
+}
+
+@mixin citation {
+  float: right;
+
+  &::before {
+    display: inline;
+    content: '-';
+  }
+
+  a {
+    @include font-size;
+    text-decoration: none;
+  }
+}
+
+@mixin quotation {
+  padding: $s5 $s5;
+  overflow: hidden;
+  max-width: 500px;
+  @include margin-center;
+  margin-bottom: $s6;
+  @include font-size(3);
+  background-color: var(--primary-color-light, #{$pallette--primary-color-light});
+  color: $pallette--primary-text-color;
+
+  @include dark-mode {
+    background-color: transparent;
+    border: 2px solid var(--primary-color-dark, #{$pallette--primary-color-dark});
+    color: $pallette--primary-color-text;
+  }
+
+  &::after,
+  &::before {
+    content: '"';
+  }
+}
+
+@mixin label {
+  @include font-size(3);
+  padding: 0 $s3;
+  @include type--regular-sans-serif;
+}
+
+@mixin list {
+  overflow: hidden;
+  padding-left: $s6;
+  margin-bottom: $s6;
+  display: block;
+}
+
+@mixin list-item {
+  margin-bottom: $s3;
+  float: left;
+  clear: both;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+@mixin button-select {
+  @include font-size;
+}
+
+@mixin mega-button {
+  padding: $s2 $s4;
+}

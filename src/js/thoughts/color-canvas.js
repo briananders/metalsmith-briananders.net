@@ -2,13 +2,11 @@ module.exports = {
   init() {
     const steps = 256; // squares per color spectrum
     const squareMax = 256;
-    const contentElement = document.getElementById('canvas-holder');
     const blueSlider = document.getElementById('blue-slider');
-    const canvas = document.createElement('canvas');
+    const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     let canSlide = false;
     let blue;
-    contentElement.appendChild(canvas);
 
     blueSlider.setAttribute('step', squareMax / steps);
     blueSlider.setAttribute('max', squareMax);

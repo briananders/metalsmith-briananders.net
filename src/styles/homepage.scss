@@ -1,25 +1,22 @@
-@import 'lib/_base-styles';
+@import 'system/utilities';
 
 main.home {
   @import "modules/thoughts-list";
-
-  header.content, header.container {
-    display: none;
-  }
-
-  .intro {
-    padding-top: 0;
-    margin-top: 0;
-  }
-
-  .container header p,
-  .content header p {
-    margin-bottom: $s6;
-  }
-
   @import "thoughts/last-fm";
 
+  margin-top: $s17;
+
+  // .intro {
+  //   padding-top: 0;
+  //   margin-top: 0;
+  // }
+
+  // .container header p,
+  // .content header p {
+  //   margin-bottom: $s6;
+  // }
+
   .last-fm-module {
-    margin-bottom: 48px;
+    margin-top: $s5;
   }
 }

@@ -1,15 +1,21 @@
-@import "lib/base-styles";
+@import "system/utilities";
 
 
 canvas {
   width: 100vw;
-  min-height: 90vh;
+  height: calc(100vh - 100px);
   border: 1px solid;
 }
 
 form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: $s8;
+  &,
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input {
+    margin-right: $s2;
+  }
 }

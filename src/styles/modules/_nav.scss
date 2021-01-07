@@ -5,18 +5,16 @@ nav.main {
   z-index: 5;
   position: fixed;
   width: 100%;
-  background-color: var(--primary-color-dark, #{$primary-color-dark});
+  background-color: var(--primary-color-dark, #{$pallette--primary-color-dark});
 
   &.shadow,
   .mobile-nav-tray {
-    box-shadow: 0 0 $s2 $primary-text-color;
+    box-shadow: 0 0 $s2 $pallette--primary-text-color;
   }
 
   a,
   a:visited,
   button {
-    outline: none;
-    background-color: transparent !important;
     padding: 0;
   }
 
@@ -26,7 +24,7 @@ nav.main {
     display: flex;
     justify-content: space-between;
     min-height: $s11;
-    background-color: var(--primary-color-dark, #{$primary-color-dark});
+    background-color: var(--primary-color-dark, #{$pallette--primary-color-dark});
   }
 
   .desktop-nav-links {
@@ -35,15 +33,15 @@ nav.main {
   .menu {
     display: block;
     background-color: transparent;
-    color: $primary-color-text;
+    color: $pallette--primary-color-text;
     font-weight: $regular;
     padding: 4px 8px;
-    box-shadow: 0 0 0 1px $google-white;
+    box-shadow: 0 0 0 1px $color--white;
 
     &:hover,
     &:focus {
-      color: $primary-color-text;
-      box-shadow: 0 0 0 2px $google-white;
+      color: $pallette--primary-color-text;
+      box-shadow: 0 0 0 2px $color--white;
     }
 
     &::before {
@@ -64,22 +62,21 @@ nav.main {
     height: $s10;
     transition-duration: $transition-speed;
     transition-timing-function: ease;
-    background-color: var(--primary-color-dark, #{$primary-color-dark});
+    background-color: var(--primary-color-dark, #{$pallette--primary-color-dark});
   }
-  .mobile-active .mobile-nav-tray {
+  .mobile-nav-tray[aria-hidden="false"] {
     top: 100%;
   }
 
+  .nav-link {
+    background: transparent;
+    padding: 0;
+  }
 
 
   a {
-    text-decoration: none;
-    display: inline-block;
-    color: $primary-color-text;
-    @include font-size();
+    @include font-size;
     font-family: $sans-serif;
-    font-weight: $regular;
-    position: relative;
 
     + a {
       margin-left: $s4;
@@ -87,36 +84,28 @@ nav.main {
     &.brand {
       @include font-size(7);
       margin: 0;
-
-      &::before {
-        bottom: 0;
-        height: 2px;
-      }
+      font-weight: $regular;
+      background: transparent;
+      padding: 0;
 
       @include mq-max(375px) {
         @include font-size(6);
       }
-    }
-
-    &::before {
-      background-color: $primary-color-text;
     }
   }
 
 
 
 
-  @include mq(600px) {
+  @include mq($medium) {
 
-    .content, .container {
-      border-bottom: none;
-    }
     .desktop-nav-links {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       float: right;
     }
+
     .menu,
     .mobile-nav-tray {
       display: none;

@@ -1,4 +1,4 @@
-@import "lib/base-styles";
+@import "system/utilities";
 @import "modules/code";
 
 // 1024 × 341
@@ -15,6 +15,7 @@ $frame-height: $sprite-height / $y-max;
   --background-image: url('/images/thoughts/earth-rotating-sprite-animation/earth-sprite.jpg');
   margin: auto;
   border-radius: 100%;
+  transition-duration: 10ms;
 
   @for $frame from 0 to ($y-max * $x-max) {
     &[data-number="#{$frame}"] {
@@ -37,8 +38,8 @@ $frame-height: $sprite-height / $y-max;
 }
 
 
-ul {
-  max-width: 600px;
-  margin: auto;
-  margin-bottom: 24px;
-}
+// ul {
+//   max-width: $grid--copy-max-width;
+//   margin: auto;
+//   margin-bottom: 24px;
+// }

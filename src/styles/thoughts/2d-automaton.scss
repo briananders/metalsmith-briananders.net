@@ -1,4 +1,4 @@
-@import "lib/base-styles";
+@import "system/utilities";
 @import "../modules/code";
 
 canvas {
@@ -6,14 +6,9 @@ canvas {
   max-width: 100vh;
   height: 100vh;
   max-height: 100vw;
-  margin: auto;
   display: block;
   border: 1px solid;
-}
-
-table {
-  text-align: center;
-  margin: auto;
+  margin: $s6 auto 0;
 }
 
 td {
@@ -32,26 +27,14 @@ td {
   }
 }
 
-input[type=checkbox] {
-  margin-left: $s1;
-}
-
-#rule-up-and-down,
-#height-up-and-down {
-  display: inline-block;
-}
-
 form {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-
-  &.p:last-child {
-    margin-bottom: $s6;
-  }
+  font-family: $sans-serif;
 
   > * {
-    padding: 0 $s1;
+    margin: 0 $s1;
   }
 
   span,

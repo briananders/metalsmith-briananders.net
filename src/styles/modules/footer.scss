@@ -1,0 +1,22 @@
+@import "../system/utilities";
+
+footer {
+  padding: $s6 0;
+  margin-top: $section-spacer;
+
+  @include pallette--primary;
+
+  ul {
+    display: grid;
+    grid-gap: $s1;
+  }
+
+  a {
+    background-color: transparent !important;
+    padding: 0;
+
+    &::before {
+      background-color: $pallette--primary-color-text;
+    }
+  }
+}

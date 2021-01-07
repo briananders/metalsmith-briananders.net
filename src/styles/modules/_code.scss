@@ -11,25 +11,25 @@ code {
   display: inline-block;
   overflow-x: auto;
   max-width: 100%;
-  color: $primary-text-color;
+  color: $pallette--primary-text-color;
   text-align: left;
   margin: auto;
 
   @include dark-mode {
-    color: $primary-color-text;
+    color: $pallette--primary-color-text;
   }
 }
 
 .code-container {
-  @include font-size();
-  max-width: 600px;
+  @include font-size;
+  max-width: $grid--copy-max-width;
   margin: auto auto $s6;
   max-width: 100%;
   overflow: hidden;
   position: relative;
   text-align: center;
   display: flex;
-  border: 2px solid var(--primary-color, #{$primary-color});
+  border: 2px solid var(--primary-color, #{$pallette--primary-color});
 
   &::before,
   &::after {
@@ -42,18 +42,18 @@ code {
 
   &::before {
     left: 0px;
-    background: linear-gradient(to left, transparent, $google-white);
+    background: linear-gradient(to left, transparent, $color--white);
 
     @include dark-mode {
-      background: linear-gradient(to left, transparent, $primary-text-color);
+      background: linear-gradient(to left, transparent, $pallette--primary-text-color);
     }
   }
   &::after {
     right: 0px;
-    background: linear-gradient(to right, transparent, $google-white);
+    background: linear-gradient(to right, transparent, $color--white);
 
     @include dark-mode {
-      background: linear-gradient(to right, transparent, $primary-text-color);
+      background: linear-gradient(to right, transparent, $pallette--primary-text-color);
     }
   }
 }
@@ -65,14 +65,14 @@ code {
 var {
   font-family: courier;
   display: inline-block;
-  border: 1px solid $divider-color;
+  border: 1px solid $pallette--divider-color;
   border-radius: 4px;
   padding: 0 0.5rem;
-  background-color: var(--primary-color-light, #{$primary-color-light});
-  color: $primary-text-color;
+  background-color: var(--primary-color-light, #{$pallette--primary-color-light});
+  color: $pallette--primary-text-color;
 
   @include dark-mode {
     background-color: transparent;
-    color: $primary-color-text;
+    color: $pallette--primary-color-text;
   }
 }

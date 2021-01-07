@@ -9,12 +9,11 @@
   border-bottom-left-radius: $border-radius;
   border-bottom-right-radius: $border-radius;
 
-  background-color: $google-white;
-  color: $primary-text-color;
+  @include pallette--base;
 
   @include dark-mode {
-    background-color: $primary-text-color;
-    color: $primary-color-text;
+    background-color: $pallette--primary-text-color;
+    color: $pallette--primary-color-text;
   }
 
   &[data-state=inactive] {

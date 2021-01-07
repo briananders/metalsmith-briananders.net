@@ -2,6 +2,19 @@
 layout: blank
 ---
 
+
+<style>
+  html {
+    background-color: #ffffff;
+    color: #212121;
+  }
+  @media (prefers-color-scheme: dark) {
+    html {
+      background-color: #212121;
+      color: #ffffff;
+    }
+  }
+</style>
 <% if(!locals.devBuild) { %>
   <%# Google Tag Manager (noscript); %>
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5KZW4HX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -11,13 +24,13 @@ layout: blank
 <%- partial('header', locals); %>
 
 <main class="<%- (locals.pageClasses) ? locals.pageClasses.toString().replace(/,/g,' ') : '' %>">
-  <header class="content">
-    <% if (locals.description) { %>
-      <p class="description" itemprop="description">
+  <% if (locals.description && !locals.homepage) { %>
+    <div class="content description" itemprop="description">
+      <p>
         <%- noWidows(locals.description); %>
       </p>
-    <% } %>
-  </header>
+    </div>
+  <% } %>
 
   <%- content %>
 

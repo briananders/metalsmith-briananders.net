@@ -1,4 +1,4 @@
-@import "lib/base-styles";
+@import "system/utilities";
 
 
 main.thoughts.using-canvas {
@@ -11,12 +11,12 @@ main.thoughts.using-canvas {
   }
 
   #pause-button.paused {
-    color: $primary-color-text;
-    background-color: $primary-text-color;
+    color: $pallette--primary-color-text;
+    background-color: $pallette--primary-text-color;
   }
 
   #clear-button {
-    color: $primary-color-text;
+    color: $pallette--primary-color-text;
     background-color: darken($color: red, $amount: 15);
 
     &:hover,
@@ -29,9 +29,8 @@ main.thoughts.using-canvas {
     margin-bottom: $s6;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
 
@@ -47,7 +46,8 @@ main.thoughts.using-canvas {
     }
 
     > * {
-      margin-bottom: $s2;
+      display: block;
+      margin: 0 $s2 $s2;
     }
   }
 }

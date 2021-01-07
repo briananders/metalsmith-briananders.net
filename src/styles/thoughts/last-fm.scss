@@ -1,93 +1,57 @@
-@import "lib/base-styles";
-
-
-blockquote {
-  margin-bottom: $s6;
-}
-
-section {
-  margin-top: $s10;
-}
+@import "system/utilities";
 
 .last-fm-module {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-flow: column;
+  display: grid;
+  grid-gap: $s5;
 
   .item {
-    display: block;
-    text-align: left;
-    width: 100%;
-    position: relative;
-    padding-right: 100px + $s3;
-    background-color: transparent;
-    color: $primary-text-color;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: $s1 / 2;
+    grid-gap: $s3;
 
-    @include dark-mode {
-      color: $primary-color-text;
-    }
+    @include pallette--base;
 
-    &::before,
-    &::after {
-      display: none;
+    &.album {
+      grid-template-columns: 1fr 100px;
     }
 
     &:focus,
     &:hover {
       bar {
-        background-color: var(--primary-color, #{$primary-color});
+        background-color: var(--primary-color, #{$pallette--primary-color});
       }
 
-      color: var(--primary-color-dark, #{$primary-color-dark});
+      color: var(--primary-color-dark, #{$pallette--primary-color-dark});
 
       @include dark-mode {
-        color: var(--primary-color-light, #{$primary-color-light});
+        color: var(--primary-color-light, #{$pallette--primary-color-light});
       }
     }
 
     .name {
-      display: block;
       @include font-size(3);
       font-family: $sans-serif;
       font-weight: $bold;
     }
 
     .scrobbles {
-      display: block;
       font-family: $serif;
     }
 
     bar {
       display: block;
       height: $s2;
-      background-color: var(--primary-color-dark, #{$primary-color-dark});
+      background-color: var(--primary-color-dark, #{$pallette--primary-color-dark});
       margin-top: $s1;
       transition-property: background-color;
       transition-duration: $transition-speed;
       transition-timing-function: ease;
     }
+  }
 
-    a,
-    a:visited {
-      text-decoration: none;
-    }
-
-    img {
-      height: 100px;
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-
-    h3 {
-      margin: 0;
-    }
-
-    + .item {
-      margin-top: $s5;
-    }
+  .info {
+    display: grid;
+    position: relative;
   }
 }
-

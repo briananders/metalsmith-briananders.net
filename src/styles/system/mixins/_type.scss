@@ -1,0 +1,99 @@
+@import "../variables/all";
+@import "./media-queries";
+
+@mixin font-size($multiplier: 3) {
+  $font-size: $multiplier * $base-unit;
+  font-size: $font-size;
+  line-height: 1.5 * $font-size;
+}
+
+@mixin type--regular-serif {
+  font-family: $serif;
+  font-weight: $regular;
+}
+
+@mixin type--regular-sans-serif {
+  font-family: $sans-serif;
+  font-weight: $regular;
+}
+
+@mixin type--bold-serif {
+  font-family: $serif;
+  font-weight: $bold;
+}
+
+@mixin type--bold-sans-serif {
+  font-family: $sans-serif;
+  font-weight: $bold;
+}
+
+
+@mixin type--body {
+  @include type--regular-serif;
+  @include font-size;
+
+  @include mq($medium) {
+    @include font-size(3);
+  }
+}
+
+@mixin type--headings {
+  @include type--bold-sans-serif;
+  text-align: center;
+}
+
+@mixin type--heading-1 {
+  @include type--headings;
+
+  @include font-size(6);
+  margin-bottom: $s6;
+}
+
+@mixin type--heading-2 {
+  @include type--headings;
+
+  @include font-size(5);
+  margin-bottom: $s5;
+}
+
+@mixin type--heading-3 {
+  @include type--headings;
+
+  @include font-size(4);
+  margin-bottom: $s4;
+}
+
+@mixin type--heading-4 {
+  @include type--headings;
+
+  @include font-size(3);
+  margin-bottom: $s3;
+}
+
+@mixin type--heading-5 {
+  @include type--headings;
+
+  @include font-size(2);
+  margin-bottom: $s3;
+}
+
+@mixin type--heading-6 {
+  @include type--headings;
+
+  @include font-size(1);
+  margin-bottom: $s3;
+}
+
+@mixin type--heading-link {
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+@mixin italic {
+  font-style: italic;
+}

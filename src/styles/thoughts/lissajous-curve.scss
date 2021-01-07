@@ -1,4 +1,4 @@
-@import "lib/base-styles";
+@import "system/utilities";
 
 .lissajous-curve-container {
   $a-color: #a55;
@@ -75,26 +75,6 @@
     bottom: 5%;
     left: 5%;
     color: $b-color;
-  }
-}
-
-form {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-
-  &.p:last-child {
-    margin-bottom: $s6;
-  }
-
-  > * {
-    padding: 0 $s1;
-  }
-
-  span,
-  label {
-    display: inline-flex;
-    align-items: center;
   }
 }
 

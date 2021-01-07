@@ -1,0 +1,10 @@
+@import "../variables/all";
+
+@mixin columns($count:1) {
+  width: ($grid--column * $count) + ($grid--gutter * ($count - 1));
+}
+
+@mixin margin-center {
+  margin-left: auto;
+  margin-right: auto;
+}

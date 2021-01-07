@@ -1,4 +1,4 @@
-@import "lib/base-styles";
+@import "system/utilities";
 
 main.thoughts.how-to-match {
   @import "../modules/code";
@@ -6,21 +6,18 @@ main.thoughts.how-to-match {
   .example-container {
     overflow: hidden;
     @include font-size(3);
-  }
-  .example-container{
+    border: 1px solid;
     margin-bottom: $s6;
   }
   .tall {
-    border-top: $s3 solid var(--accent-color, #{$accent-color});
+    border-top: $s3 solid var(--accent-color, #{$pallette--accent-color});
   }
-  .column-1 {
-    background-color: $primary-text-color;
+  .column-1,
+  .column-3 {
+    background-color: $color--grey-900;
   }
   .column-2 {
-    background-color: var(--primary-color-dark, #{$primary-color-dark});
-  }
-  .column-3 {
-    background-color: $primary-text-color;
+    background-color: $color--grey-800;
   }
   .column-1,
   .column-2,
@@ -28,7 +25,7 @@ main.thoughts.how-to-match {
     padding-bottom: 99999px;
     margin-bottom: -99999px;
     float: left;
-    color: $primary-color-text;
+    color: $pallette--primary-color-text;
   }
   .example-1 .column-1,
   .example-1 .column-2 {

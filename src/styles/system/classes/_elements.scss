@@ -1,0 +1,104 @@
+@import "../utilities";
+
+.html {
+  @include html;
+}
+
+.selection {
+  @include selection;
+}
+
+.section,
+.description {
+  @include section;
+}
+
+.description {
+  @include paragraph-margin;
+}
+
+.p,
+.paragraph {
+  @include paragraph;
+}
+
+.i,
+.italic {
+  @include italic;
+}
+
+.content,
+.container {
+  position: relative;
+  max-width: 170 * $s1;
+  @include margin-center;
+  padding: 0 $s2;
+  overflow: hidden;
+
+  @include mq($medium) {
+    padding: 0 $s5;
+  }
+}
+
+.button {
+  @include button;
+  @include button-select;
+}
+
+.select {
+  @include button-select;
+}
+
+.error {
+  color: $color--red-500;
+  text-align: center;
+}
+
+.block {
+  display: block;
+}
+
+.center {
+  text-align: center;
+  justify-content: center;
+}
+
+.block {
+  display: block;
+}
+
+.center {
+  text-align: center;
+  justify-content: center;
+}
+
+.block-center {
+  @include margin-center;
+}
+
+.p,
+.paragraph {
+  @include paragraph;
+
+  &-margin {
+    @include paragraph-margin;
+  }
+}
+
+.link,
+.inline-link {
+  @include inline-link;
+}
+
+.link.block,
+.block-link {
+  @include block-link;
+}
+
+.link-image {
+  @include link-image;
+}
+
+.mega-button {
+  @include mega-button;
+}

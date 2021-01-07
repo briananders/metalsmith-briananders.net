@@ -1,4 +1,4 @@
-@import "lib/base-styles";
+@import "system/utilities";
 
 #up-and-down {
   display: inline-block;
@@ -9,7 +9,6 @@ answer, answer-array {
   text-align: center;
   margin-top: $s6;
   margin-bottom: $s6;
-  @include font-size(3);
 }
 
 answer-array {
@@ -29,7 +28,6 @@ canvas#star {
   height: 90vw;
   max-height: 90vh;
 
-  // background: blue;
   margin: auto;
   display: block;
   transform: rotate(-90deg);

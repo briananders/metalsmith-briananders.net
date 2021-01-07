@@ -80,6 +80,7 @@ module.exports = (dir, pageMappingData) => ({
     if (!locals.href) {
       throw new Error('externalLink is missing href attribute');
     }
+    locals.class = `${locals.class || ''} link`;
     return `<a itemprop="url"
     ${Object.keys(locals).map((attr) => `${attr}="${locals[attr]}"`).join(' ')}>${str}</a>`;
   },
@@ -87,4 +88,25 @@ module.exports = (dir, pageMappingData) => ({
   externalLink(str, locals) {
     return this.link(str, merge(locals, { rel: 'noopener', target: 'blank' }));
   },
+
+  defaultLastFMModule: (albums = true) => `
+    <span class="item ${albums ? 'album' : 'artist'}">
+      <span class="info">
+        ${albums ? `
+          <span class="name">
+            Loading album name
+          </span>
+        ` : ''}
+        <span class="name">
+          Loading artist name
+        </span>
+        <span class="scrobbles">
+          Loading scrobbles
+        </span>
+        <bar style="width: 100%;"></bar>
+      </span>
+      ${albums ? `
+        <span>Loading album cover</span>
+      ` : ''}
+    </span>`,
 });

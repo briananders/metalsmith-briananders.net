@@ -1,0 +1,5 @@
+@import "../variables/all";
+
+@mixin box {
+  box-sizing: border-box;
+}
